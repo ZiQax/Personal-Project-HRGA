@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Log Service</title>
+    <link rel="stylesheet" href="../css/users.css">
+</head>
+
+<body>
+
+    <section id="intfc">
+        <div class="navigation">
+            <div class="profile">
+                <i class="fa-solid fa-bell"></i>
+                <img id="iamge" src="../aset/image.jpg">
+            </div>
+        </div>
+
+        <div id="intfc">
+            <div class="ui">
+                <div class="user-info">
+                    <h4 id="nam-u">Nama User</h4>
+                    <p id="email-u">user@example.com</p>
+                </div>
+
+                <div class="actions">
+                    <a href="profile.html" class="btn">Profile Setting</a>
+                    <button id="logoutBtn" class="btn logout">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="i-name">
+            List Peminjaman
+        </h3>
+
+        <section id="cont-form">
+            <div class="dtainpt">
+                <form id="form">
+                    <div class="judul">
+                        <h2>Form Peminjaman</h2>
+                    </div>
+
+                    <input type="text" placeholder="Name" id="nme" name="user_id">
+
+
+                    <div class="custom-select" id="departementDropdown" name="departement">
+                        <div class="selected">Pilih Departement</div>
+                        <div class="options">
+                            <div data-value="HRGA">HRGA</div>
+                            <div data-value="FAS">FAS</div>
+                            <div data-value="Design Engineering">DE"></div>
+                            <div data-value="Marketing">Marketing</div>
+                            <div data-value=" PUD">Purchasing</div>
+                            <div data-value="PPIC">PPIC</div>
+                            <div data-value="QAD">QAD</div>
+                            <div data-value="PE">PE</div>
+                            <div data-value="Production">Production</div>
+                        </div>
+                        <input type="hidden" placeholder="Departement" id="departement" name="departement">
+                    </div>
+
+                    <div class="custom-select" id="sectionDropdown" name="departement">
+                        <div class="selected">Pilih Section</div>
+                        <div class="options">
+                            <div data-value="HRD">HRD</div>
+                            <div data-value="Finance">Finance</div>
+                            <div data-value="Design Engineering">DE</div>
+                            <div data-value="Marketing">Marketing</div>
+                            <div data-value=" PUD">Purchasing</div>
+                            <div data-value="PPIC">Planning</div>
+                            <div data-value="QAD">QAD</div>
+                            <div data-value="PE">PE</div>
+                            <div data-value="Production">Finishing</div>
+                        </div>
+                        <input type="hidden" placeholder="Section" id="section" name="section">
+                    </div>
+
+                    <div class="custom-select" id="positionDropdown" name="position">
+                        <div class="selected">Pilih Position</div>
+                        <div class="options">
+                            <div data-value="General Manager">GM - General Manager</div>
+                            <div data-value="Deputy General Manager">DGM - Deputy General Manager</div>
+                            <div data-value="Senior Manager">SM - Senior Manager</div>
+                            <div data-value="Manager">M - Manager</div>
+                            <div data-value=" Deputy Manager">DM - Deputy Manager</div>
+                            <div data-value="Assistant Manager">AM - Assistant Manager</div>
+                            <div data-value="Supervisor">SPV - Supervisor</div>
+                            <div data-value="Senior Chief">SC - Senior Chief</div>
+                            <div data-value="Chief">C - Chief</div>
+                            <div data-value="Senior Staff">SS - Senior Staff</div>
+                            <div data-value="Staff">S - Staff</div>
+                            <div data-value="Outsource">OTS - Outsource</div>
+                            <div data-value="Intern">ITS - Intern</div>
+                            <div data-value="PKL">PKL - PKL</div>
+                        </div>
+                        <input type="hidden" placeholder="Reason" id="position" name="position">
+                    </div>
+                      
+                    <div class="custom-select" id="kendaraanDropdown" name="position">
+                    <div class="selected">Pilih Title</div>
+                    <div class="options">
+                        <div data-value="2">B 4425 FBM - Toyota Avanza</div>
+                        <div data-value="3">T 7425 BK - Toyota Avanza</div>
+                        <div data-value="5">T 0976 AK - Daihatsu GrandMax</div>
+                        <div data-value="6">B 9876 ABK - Daihatsu GrandMax</div>
+                    </div>
+                    <input type="hidden" placeholder="Pilih Kendaraan" id="kendaraan_id" name="kendaraan_id">
+                </div>
+                
+                    <div id="wrapper">
+                        <div class="tujuan-group">
+                            <input type="text" placeholder="tujuan" id="rson" name="tujuan">
+                            <button type="button" class="btn-add">+</button>
+                            <button type="button" class="btn-del">-</button>
+                        </div>
+                    </div>
+                    <div class="butadd">
+                        <button type="submit" class="tmbh">Add</button>
+                        <button type="submit" class="cnsl">Cancel</button>
+                    </div>
+            </div>
+            </form>
+            </div>
+        </section>
+
+        <!-- Modal Edit -->
+        <div id="modalEdit"
+            style="display:none; position:fixed; top:30%; left:35%; width:300px; background:#fff; padding:20px; border-radius:8px; border:1px solid #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index:1000;">
+            <label for="editValue">Edit Data:</label><br>
+
+            <input type="text" id="editName" style="width:100%; margin:10px 0;">
+            <!-- <input type="time" id="editTitle" style="width:100%; margin:10px 0;"> -->
+            <input type="text" id="editReason" style="width:100%; margin:10px 0;">
+            <select id="editStatus" style="width:100%; margin:10px 0;">
+                <option value="" disabled selected hidden>Pilih Status</option>
+                <option value="Menunggu persetujuan">Pending</option>
+                <option value="Disetujui">Approved</option>
+                <option value="Ditolak">Rejected</option>
+            </select>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="saveEdit">Simpan</button>
+                <button id="closeModal">Tutup</button>
+            </div>
+        </div>
+
+        <div id="modalDeleteSuccess" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
+     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
+            <strong>
+                <p>✅</p>
+                <p>Data berhasil dihapus!</p>
+            </strong>
+
+        </div>
+
+        <div id="modalSave" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
+     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
+            <strong>
+                <p>✅</p>
+                <p>Data Berhasil di ganti</p>
+            </strong>
+
+        </div>
+
+
+    </section>
+
+    <script>
+        $('#menu-button').click(function () {
+            $('#menu').toggleClass("active");
+        })
+    </script>
+
+    <script src="../logic/users.js"></script>
+</body>
+
+</html>

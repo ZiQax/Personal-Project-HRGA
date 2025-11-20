@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/kendStyle.css">
+    <title>Form Izin</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dtainpt">
+            <form id="form">
+                <div class="judul">
+                    <h2>Form Izin</h2>
+                </div>
+
+                <input type="text" placeholder="Name" id="nme" name="user_id">
+
+
+                <div class="custom-select" id="departementDropdown" name="departement">
+                    <div class="selected">Pilih Title</div>
+                    <div class="options">
+                        <div data-value="HRGA">HRGA</div>
+                        <div data-value="FAS">FAS</div>
+                        <div data-value="Design Engineering">DE"></div>
+                        <div data-value="Marketing">Marketing</div>
+                        <div data-value=" PUD">Purchasing</div>
+                        <div data-value="PPIC">PPIC</div>
+                        <div data-value="QAD">QAD</div>
+                        <div data-value="PE">PE</div>
+                        <div data-value="Production">Production</div>
+                    </div>
+                    <input type="hidden" placeholder="Departement" id="departement" name="departement">
+                </div>
+
+                <div class="custom-select" id="sectionDropdown" name="departement">
+                    <div class="selected">Pilih Title</div>
+                    <div class="options">
+                        <div data-value="HRD">HRD</div>
+                        <div data-value="Finance">Finance</div>
+                        <div data-value="Design Engineering">DE"></div>
+                        <div data-value="Marketing">Marketing</div>
+                        <div data-value=" PUD">Purchasing</div>
+                        <div data-value="PPIC">Planning</div>
+                        <div data-value="QAD">QAD</div>
+                        <div data-value="PE">PE</div>
+                        <div data-value="Production">Finishing</div>
+                    </div>
+                    <input type="hidden" placeholder="Section" id="section" name="section">
+                </div>
+
+                <div class="custom-select" id="kendaraanDropdown" name="position">
+                    <div class="selected">Pilih Title</div>
+                    <div class="options">
+                        <div data-value="2">B 4425 FBM - Toyota Avanza</div>
+                        <div data-value="3">T 7425 BK - Toyota Avanza</div>
+                        <div data-value="5">T 0976 AK - Daihatsu GrandMax</div>
+                        <div data-value="6">B 9876 ABK - Daihatsu GrandMax</div>
+                    </div>
+                    <input type="hidden" placeholder="Pilih Kendaraan" id="kendaraan_id" name="kendaraan_id">
+                </div>
+
+                <input type="text" placeholder="alasan" id="rson" name="tujuan">
+                <div class="butadd">
+                    <button type="submit" class="tmbh">Add</button>
+                    <button type="submit" class="cnsl">Cancel</button>
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <button id="close-modal">Tutup</button>
+        </div>
+    </div>
+
+
+    <script src="../logic/kendaraanHand.js"></script>
+</body>
+
+</html>

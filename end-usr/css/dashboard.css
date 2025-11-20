@@ -1,0 +1,566 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #E5E7EB;
+  display: flex;
+  height: 100vh; 
+  width: fit-content;  /* penuh layar */
+/* hilangin scroll */
+}
+
+
+.menu {
+    background: #111827;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    z-index: 9999;
+}
+
+.menu.tutup {
+    width: 70px;
+}
+
+.menu .logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 30px 0px 40px 0px;
+}
+
+.menu .logo img {
+    width: 50px;
+    height: 50px;;
+    margin: 10px;
+}
+
+.menu .logo h2 {
+    display: none;
+}
+
+.menu .item > li {
+    list-style-type: none;
+    padding: 15px 0px 0;
+    transition: 0.3s ease-in-out;
+}
+
+.menu .item li .tooltip {
+    position: absolute;
+    left: 12px;
+    height: 35px;
+    width: 122px;
+    margin-top: -45px;
+    transform: translateX(50%);
+    border-radius: 6px;
+    line-height: 35px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    z-index: 999;
+}
+
+.menu:not(.tutup) .item li .tooltip {
+    display: none;
+
+}
+
+.menu .item li:hover .tooltip {
+    opacity: 1;
+    transition: all 0.5s ease;
+    pointer-events: auto;
+    margin-top: -50px;
+    z-index: 99999;
+}
+
+.menu .item li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 5px;
+  align-items: center;
+  color: #E5E7EB;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.menu .item li a:hover{
+    background-color: #253047;
+    cursor: pointer; 
+    border-radius: 10px;
+}
+
+.menu .item li:nth-child(1) {
+    /* border-left: 4px solid white; */
+}
+
+.menu .item li a i {
+    color: rgb(134, 141, 151);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 0px;
+    text-align: center;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 2px;
+    padding-top: 10px;
+    white-space: nowrap;
+}
+
+.menu .item li:hover i,
+.menu .item li:hover .label {
+    color: #08496e;
+}
+
+.menu .item li a .label {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.menu.tutup .item li a .label {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.menu .item li a .arrow {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.menu .item li.open a .arrow{
+    transform: rotate(180deg);
+}
+
+.menu.tutup .item li a .arrow {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.menu .item li a .arrow i {
+  font-size: 15px;
+  opacity: 0;
+}
+
+.menu .item li a:hover .arrow i {
+  opacity: 1;
+}
+
+.menu .item li .sub-menu {
+  max-height: 0;
+  opacity: 0;
+  padding-left: 20px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+
+.menu:not(.tutup) .item li.open .sub-menu {
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto; /* <-- TAMBAHKAN INI */
+    transition: all 0.3s ease;
+}
+
+
+
+.menu .item li > .sub-menu  li {
+    list-style-type: none;
+    background: #111827;
+    transition: 0.3s ease-in-out;
+}
+
+.menu .item li > .sub-menu > li:hover {
+    background-color: #253047;
+    cursor: pointer; 
+    border-radius: 10px;
+}
+
+.menu .item li > .sub-menu li a {
+    font-size: 14px;
+    padding: 10px 20px;
+    display: block;
+    color: #E5E7EB;
+    text-decoration: none;
+}
+
+
+
+/* Default saat sidebar LEBAR */
+#intfc {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  transition: all 0.3s ease;
+}
+
+.menu.tutup ~ #intfc {
+  margin-left: 70px;
+  width: calc(100% - 70px);
+}
+
+
+#intfc .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px 30px;
+     border-bottom: 3px solid #dfe4e8;
+    position: fixed;
+    transition: all 0.3s ease;
+    width: calc(100% - 70px);
+    height: 80px;
+    z-index: 99999;
+}
+
+body.sidebar-open #intfc .navigation {
+    width: calc(100% - 250px);
+}
+
+#intfc .navigation .search {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #d7dbe7;
+  border-radius: 8px;
+}
+
+#intfc .navigation .search i {
+    margin-right: 14px;
+}
+
+#intfc .navigation .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#intfc .navigation .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#intfc .navigation .profile i {
+    margin-right: 30px;
+    font-size: 24px;
+    font-weight: 400px;
+}
+
+ .notification-badge {
+    position: relative;
+    top: -5px; /* Posisi angka sedikit ke atas */
+    right: 40px; /* Posisi angka sedikit ke kanan */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    line-height: 1.2;
+    padding: 5px 10px;
+    font-size: 14px;
+    display: none; /* Sembunyikan badge jika tidak ada notifikasi */
+}
+
+#intfc .navigation .profile img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+#intfc .ui {
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: scale(0.7) translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+#intfc .ui.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  animation: uiBounce 0.35s ease;
+}
+
+/* Animasi bounce halus */
+@keyframes uiBounce {
+  0%   { transform: scale(0.7) translateY(-15px); opacity: 0; }
+  60%  { transform: scale(1.05) translateY(0); opacity: 1; }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.user-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.actions .btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actions .btn {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+.actions .btn:hover {
+  background: #0056b3;
+}
+
+.actions .btn.logout {
+  background: #dc3545;
+}
+
+.actions .btn.logout:hover {
+  background: #a71d2a;
+}
+
+/* Optional: bikin animasi "bounce" dikit */
+@keyframes uiBounce {
+    0%   { transform: scale(0.7) translateY(-20px); opacity: 0; }
+    60%  { transform: scale(1.05) translateY(0); opacity: 1; }
+    100% { transform: scale(1) translateY(0); }
+}
+
+#intfc .ui.active {
+    animation: uiBounce 0.4s ease;
+}
+
+.n1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#menbtn {
+    display: initial;
+    color: #2b2b2b;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+
+.cont-main {
+  padding: 30px;
+  margin-top: 100px;
+  margin-left: 60px;
+  margin-right: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main {
+  flex: 1;
+  padding: 30px;
+  margin-top: 100px;
+  margin-left: 60px;
+  margin-right: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeInText 0.5s 0ms forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  } to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+body.sidebar-open #intfc .main {
+    width: calc(100% - 100px);
+}
+
+.value-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  min-height: 100%;
+  width: 100%; /* bebas sesuai kebutuhan */
+  align-items: center; 
+  justify-content: center; /* biar item (kalau ada) center */
+  transition: all 0.3s ease;
+}
+
+/* body.sidebar-open #intfc .value {
+    width: calc(100% - 250px);
+} */
+
+.val-box {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  width: calc(33% - 25px);
+  transition: all 0.3s ease;
+}
+
+
+.val-box:nth-child(4) {
+  width: calc(50% - 25px);
+}
+
+.val-box:nth-child(5) {
+  width: calc(50% - 25px);
+}
+
+.val-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.val-box .lbl h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.val-box .vw {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+}
+
+.val-box #chart {
+  width: 100%;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+}
+
+th {
+  font-size: 15px;
+  font-weight: 600;
+  background: #95b3f0;
+  text-align: center;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+tbody tr:hover td {
+  background: #1f3549b0;
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#detail > a > i {
+  font-size: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  background: rgb(3, 80, 116);
+  padding: 10px;
+  border-radius: 10%;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-top: 70px;
+    padding: 15px;
+  }
+
+  .value {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .val-box {
+    width: 100%;
+  }
+}

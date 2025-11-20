@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log Peminjaman</title>
+</head>
+<body>
+  <h2>Log Bulan: 
+    <span id="bulan"></span>
+  </h2>
+  <table id="logTable"></table>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const year = now.getFullYear();
+    const bulaStr = `${month.toString().padStart(2, '0')}`;
+
+    console.log(month);
+    document.getElementById('bulan').textContent = bulaStr;
+    
+    fetch(`http://localhost:3000/api/mobilitas/log/${bulaStr}`)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error(`Error ${res.status}: ${res.statusText}`);
+        }
+        return res.json()
+      })
+      .then(result =>{
+        console.log(result);
+        const data = result.data;
+        const table = document.getElementById('logTable');
+
+        const headTable = table.insertRow();
+        ['id', 'user_id', 'tujuan', 'tanggal_pinjam', 'status'].forEach(h => {
+          const th = document.createElement('th');
+          th.textContent = h;
+          headTable.appendChild(th);
+        })
+        data.forEach(item => {
+          const row = table.insertRow();
+          row.insertCell().textContent = item.id;
+          row.insertCell().textContent = item.user_id;
+          row.insertCell().textContent = item.tujuan;
+          row.insertCell().textContent = item.tanggal_pinjam;
+          row.insertCell().textContent = item.status;
+        });
+      })
+      .catch(err => console.log(err));
+  </script>
+</body>
+</html>

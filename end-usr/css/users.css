@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #E5E7EB;
+    position: relative;
+    max-height: 100vh;
+}
+
+/* Default saat sidebar LEBAR */
+#intfc {
+  width: 100% ;
+  transition: all 0.3s ease;
+}
+
+
+#intfc .navigation {
+    display: flex;
+    align-items: right;
+    justify-content: flex-end;
+    background: #fff;
+    padding: 15px 30px;
+    border-bottom:  3px solid #594ef7;
+    position: fixed;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+body.sidebar-open #intfc .navigation {
+    width: calc(100% - 250px);
+}
+
+#intfc .navigation .search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #d7dbe7;
+    border-radius:  4px;
+}
+
+#intfc .navigation .search i {
+    margin-right: 14px;
+}
+
+#intfc .navigation .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#intfc .navigation .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#intfc .navigation .profile i {
+    margin-right: 20px;
+    font-size: 19px;
+    font-weight: 400px;
+}
+
+#intfc .navigation .profile img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+#intfc .ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 90px;
+  left: 80%;
+  width: 280px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+
+  opacity: 0;
+  transform: scale(0.7) translateY(-15px);
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 99;
+}
+
+#intfc .ui.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  animation: uiBounce 0.35s ease;
+}
+
+/* Animasi bounce halus */
+@keyframes uiBounce {
+  0%   { transform: scale(0.7) translateY(-15px); opacity: 0; }
+  60%  { transform: scale(1.05) translateY(0); opacity: 1; }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.user-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.actions .btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actions .btn {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+.actions .btn:hover {
+  background: #0056b3;
+}
+
+.actions .btn.logout {
+  background: #dc3545;
+}
+
+.actions .btn.logout:hover {
+  background: #a71d2a;
+}
+
+/* Optional: bikin animasi "bounce" dikit */
+@keyframes uiBounce {
+    0%   { transform: scale(0.7) translateY(-20px); opacity: 0; }
+    60%  { transform: scale(1.05) translateY(0); opacity: 1; }
+    100% { transform: scale(1) translateY(0); }
+}
+
+#intfc .ui.active {
+    animation: uiBounce 0.4s ease;
+}
+
+.n1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#menbtn {
+    display: initial;
+    color: #2b2b2b;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#cont-form {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dtainpt {
+    width: 25%;
+    margin: 20px 0 30px 30px;
+    background: #fff;
+    padding: 17px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 1;
+}
+
+
+.dtainpt h2 {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.dtainpt input {
+    padding: 5px 10px;
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #d7dbe7;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 13px;
+}
+
+
+.dtainpt .custom-select {
+  margin-top: 10px;
+  width: 100%;
+  position: relative;
+  font-size: small;
+  color: #8a909e;
+  user-select: none;
+  margin-bottom: 13px;
+  height: 50px;
+}
+
+
+.custom-select .selected {
+  padding: 15px 10px;
+  background: #fff;
+  border: 1px solid #d7dbe7;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 50px;
+  z-index: 10;
+}
+
+.custom-select .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d7dbe7;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  max-height: 0;
+  overflow-y: scroll;
+  transition: max-height 0.3s ease;
+  z-index: 10;
+}
+
+
+.custom-select.open .options {
+  max-height: 75px;
+}
+
+.custom-select .options div {
+  padding: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-select .options div:hover {
+  background: #f1f1f1;
+}
+
+.dtainpt .butadd {
+    width: 100%;
+    margin-top: 20px;
+    display: block;
+    padding: 10px 0px;
+}
+
+.dtainpt .butadd .tmbh {
+    width: 100%;
+    margin-bottom: 10px;
+    background: #75b0d3;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.dtainpt .butadd .tmbh:hover {
+    background: #08496e;
+    color: #fff;
+}
+
+.dtainpt .butadd .cnsl {
+    width: 100%;
+    background-color: #f56767;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;   
+}
+
+.dtainpt .butadd .cnsl:hover {
+    background: #640d0d;
+    color: #fff;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

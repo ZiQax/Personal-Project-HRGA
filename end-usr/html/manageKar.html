@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h2>Input Mobilitas Kendaraan</h2>
+  <form id="mobilitasForm">
+    <label>NIK</label><br>
+    <input type="text" name="NIK" required><br><br>
+    <label>Tanggal:</label>
+    <input type="text" name="nama" required><br><br>
+    <label>Position</label><br>
+    <input type="text" name="postion" required><br><br>
+    <label>departement</label>
+    <input type="text" name="departement" required><br><br>
+    <label>Section</label>
+    <input type="text" name="section" required><br><br>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+ <script>
+    const updateForm  = document.getElementById('mobilitasForm');
+    document.getElementById('mobilitasForm').addEventListener('submit', async (e) => {
+        
+        const form = new FormData(updateForm);
+        const data = Object.fromEntries(form);
+        console.log(data);
+
+        try {
+            const response = await fetch('http://localhost:3000/api/uk', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(!response.ok) throw new Error(response.statusText);
+
+            const result = await response.json();
+                 alert(result.message || 'Success');
+                    console.log(result);
+        } catch (err) {
+            alert(err.message);
+            console.log(err);
+        }
+    })
+ </script>
+</html>

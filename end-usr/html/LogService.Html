@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Log Service</title>
+    <link rel="stylesheet" href="../css/Book.css">
+</head>
+
+<body>
+    <section class="menu tutup">
+        <div class="logo">
+            <img src="../aset/qlogo.svg">
+            <h2>Qiza</h2>
+        </div>
+        <ul class="item">
+            <li><a href="dashboard.html">
+                    <i class="fa-solid fa-pager"></i>
+                    <span class="label">Dashboard</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li class="kendaraan">
+                <a href="#">
+                    <i class="fa-solid fa-car"></i>
+                    <span class="label">Kendaraan</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="Booking.html">
+                            <i class="fa-solid fa-book"></i>
+                            <span>Booking</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="fa-solid fa-database"></i>
+                            Data Peminjaman
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logService.html">
+                            <i class="fa-solid fa-gear"></i>
+                            Service
+                        </a>
+                    </li>
+                </ul>
+                <span class="tooltip">Kendaraan</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span class="label">Analisa</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">Analisa</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span class="label">Maintenace</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="#">Daily</a></li>
+                    <li><a href="#">Weekly</a></li>
+                    <li><a href="#">Monthly</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-key"></i>
+                    <span class="label">Login</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">Login</span>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="label">History</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">History</span>
+            </li>
+        </ul>
+    </section>
+
+    <section id="intfc">
+        <div class="navigation">
+            <div class="n1">
+                <div>
+                    <i id="menbtn" class="fa-solid fa-bars"></i>
+                </div>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="search" id="search">
+                    <button type="button" id="search-button"></button>
+                </div>
+                <button type="button" id="btnsrc">Search</button>
+            </div>
+            <div class="profile">
+                <i class="fa-solid fa-bell"></i>
+                <img id="image" src="../aset/image.jpg">
+            </div>
+        </div>
+
+       <div id="user-intfc">
+      <div class="ui">
+        <div class="user-info">
+          <h4 id="nam-u">Nama User</h4>
+          <p id="email-u">user@example.com</p>
+        </div>
+
+        <div class="actions">
+          <a href="profile.html" class="btn">Profile Setting</a>
+          <button id="logoutBtn" class="btn logout">Logout</button>
+        </div>
+      </div>
+    </div>
+
+        <h3 class="i-name">
+            List Peminjaman
+        </h3>
+
+        <div class="value">
+
+            <div class="val-box">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <div>
+                    <h3 id="pending-count">0</h3>
+                    <span>Pending</span>
+                </div>
+            </div>
+
+            <div class="val-box">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                    <h3 id="approved-count">0</h3>
+                    <span>Approved</span>
+                </div>
+            </div>
+
+            <div class="val-box">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <div>
+                    <h3 id="rejected-count">0</h3>
+                    <span>Rejected</span>
+                </div>
+            </div>
+        </div>
+       
+        <div class="action-bar">
+        <div class="cldr">
+            <div class="icn-cldr">
+                <i class="fa-solid fa-calendar-days"></i>
+                <div class="calender">
+                    <input type="date" id="start-date">
+                </div>
+            </div>
+
+            <div class="icn-cldr">
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <div class="calender">
+                    <input type="date" id="end-date">
+                </div>
+            </div>
+
+            <div class="icn-btn">
+                <div class="brt">
+                    <button type="button" id="btn-car">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cont-papan">
+            <div class="papan">
+                <div class="butadd">
+                    <button type="button" class="tmbh"> + Add</button>
+                    <button type="button" class="sv">Save</button>
+                </div>
+                <table width="100%" class="table">
+                    <thead>
+                        <tr>
+                            <th>Tanggal<span><i class="fa-solid fa-chevron-down"></i></span></th>
+                            <th class="name">Deskripsi<span><i class="fa-solid fa-chevron-down"></i></span></th>
+                            <th>Biaya<span><i class="fa-solid fa-chevron-down"></i></span></th>
+                            <th><input type="checkbox" value="checkbox" id="selectAll"></th>
+                            <th><button type="button" id="delete">Delete all</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <div class="pgnt">
+                    <div class="wrp-pgn">
+                        <button class="dbl-arr" id="first">&laquo;</button>
+                        <button class="arr-pgn" id="prev">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <div class="lnk">
+                            <a href="#" class="page-link">1</a>
+                            <a href="#" class="page-link">2</a>
+                            <a href="#" class="page-link">3</a>
+                            <a href="#" class="page-link">4</a>
+                            <a href="#" class="page-link">5</a>
+                        </div>
+                        <button class="arr-pgn" id="next">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="dbl-arr" id="last">&raquo;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal Edit -->
+        <div id="modalEdit"
+            style="display:none; position:fixed; top:30%; left:35%; width:300px; background:#fff; padding:20px; border-radius:8px; border:1px solid #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index:1000;">
+            <label for="editValue">Edit Data:</label><br>
+            <input type="text" id="editName" style="width:100%; margin:10px 0;">
+            <input type="text" id="editTitle" style="width:100%; margin:10px 0;">
+            <input type="text" id="editReason" style="width:100%; margin:10px 0;">
+            <select id="editStatus" style="width:100%; margin:10px 0;">
+                <option value="" disabled selected hidden>Pilih Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="saveEdit">Simpan</button>
+                <button id="closeModal">Tutup</button>
+            </div>
+        </div>
+
+        <div id="modalDeleteSuccess" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
+     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
+            <strong>
+                <p>✅</p>
+                <p>Data berhasil dihapus!</p>
+            </strong>
+
+        </div>
+
+        <div id="modalSave" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
+     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
+            <strong>
+                <p>✅</p>
+                <p>Data Berhasil di ganti</p>
+            </strong>
+
+        </div>
+
+
+    </section>
+
+    <script>
+        $('#menu-button').click(function () {
+            $('#menu').toggleClass("active");
+        })
+    </script>
+
+    <script src="../logic/serviceKend.js"></script>
+</body>
+
+</html>

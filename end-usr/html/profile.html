@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/profile.css">
+  </head>
+
+  <body>
+    <section class="menu tutup">
+      <div class="logo">
+        <img src="qlogo.svg">
+        <h2>Qiza</h2>
+      </div>
+      <ul class="item">
+        <li><a href="dashboard.html">
+            <i class="fa-solid fa-pager"></i>
+            <span class="label">Dashboard</span>
+            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li class="kendaraan">
+          <a href="#">
+            <i class="fa-solid fa-car"></i>
+            <span class="label">Kendaraan</span>
+            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="Booking.html" id="booking">Booking</a></li>
+            <li><a href="#">Data Peminjaman</a></li>
+            <li><a href="#">Service</a></li>
+          </ul>
+          <span class="tooltip">Kendaraan</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span class="label">Analisa</span>
+            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </a>
+          <span class="tooltip">Analisa</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <span class="label">Maintenace</span>
+            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="#">Daily</a></li>
+            <li><a href="#">Weekly</a></li>
+            <li><a href="#">Monthly</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-key"></i>
+            <span class="label">Login</span>
+            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </a>
+          <span class="tooltip">Login</span>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>
+            <span class="label">History</span>
+            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+          </a>
+          <span class="tooltip">History</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="intfc">
+      <div class="navigation">
+        <div class="n1">
+          <div>
+            <i id="menbtn" class="fa-solid fa-bars"></i>
+          </div>
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="search" id="search">
+            <button type="button" id="search-button"></button>
+          </div>
+          <button type="button" id="btnsrc">Search</button>
+        </div>
+        <div class="profile">
+          <i class="fa-solid fa-bell"></i>
+          <img id="iamge" src="image.jpg">
+        </div>
+      </div>
+
+      <!-- ===== Profile Section ===== -->
+<div class="ui">
+  <h4 id="nam-u">Angga Qomaruzzaman</h4>
+  <p id="email-u">anggaqomaruzzaman@gmail.com</p>
+  <a href="profile.html" id="cng">Change Profile</a>
+</div>
+
+<h3 class="i-name">Dashboard</h3>
+
+<div class="value">
+  <!-- Profile Card 1 -->
+  <div class="cont-prf">
+    <div class="image-prf">
+      <img src="image.jpg" alt="Profile Picture">
+    </div>
+
+    <div class="name-prf">
+      <h4>Angga Qomaruzzaman</h4>
+      <p>IT Support</p>
+    </div>
+
+    <div class="icnt-prf">
+      <div class="contact">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>08123456789</span>
+      </div>
+      <div class="contact">
+        <i class="fa-solid fa-phone-volume"></i>
+        <span>021234567</span>
+      </div>
+      <div class="contact">
+        <i class="fa-regular fa-envelope"></i>
+        <span>anggaqomaruzzaman@gmail.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Card 2 -->
+  <div class="cont-prf">
+    <div class="image-prf">
+      <img src="image.jpg" alt="Profile Picture">
+    </div>
+
+    <div class="name-prf">
+      <h4>Angga Qomaruzzaman</h4>
+      <p>Frontend Developer</p>
+    </div>
+
+    <div class="icnt-prf">
+      <div class="contact">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>08123456789</span>
+      </div>
+      <div class="contact">
+        <i class="fa-solid fa-phone-volume"></i>
+        <span>021234567</span>
+      </div>
+      <div class="contact">
+        <i class="fa-regular fa-envelope"></i>
+        <span>anggaqomaruzzaman@gmail.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </body>
+  </html>

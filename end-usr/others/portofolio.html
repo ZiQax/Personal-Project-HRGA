@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ziqa | Portofolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- Navbar -->
+    <header class="fixed top-0 w-full bg-gray-900 z-50 shadow-lg">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-xl">Ziqa</h1>
+        <ul class="flex gap-6 text-sm">
+          <li><a href="#home" class="hover:text-cyan-400 text-xl">Home</a></li>
+          <li><a href="#about" class="hover:text-cyan-400 text-xl">About</a></li>
+          <li><a href="#skills" class="hover:text-cyan-400 text-xl">Skills</a></li>
+          <li><a href="#experience" class="hover:text-cyan-400 text-xl">Experience</a></li>
+          <li><a href="#contact" class="hover:text-cyan-400 text-xl">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+<!-- Hero -->
+<section id="home" class="min-h-screen flex items-center justify-center bg-gray-900 pt-20 relative">
+  <!-- Particle Background -->
+  <div id="tsparticles" class="absolute inset-0 -z-10"></div>
+
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8">
+    
+    <!-- Text -->
+    <div class="text-center md:text-left max-w-xl" data-aos="fade-right">
+      <h1 class="md:text-5xl font-extrabold leading-tight mb-4">
+        <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Hello, I'm</span>
+      </h1>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+        <span id="typed" class="text-white"></span>
+      </h1>
+      <p class="text-lg text-gray-300 mb-6">
+        Web Developer berpengalaman membangun aplikasi modern & interaktif dengan 
+        <span class="text-cyan-400 font-semibold">React</span>, 
+        <span class="text-blue-400 font-semibold">MongoDB</span>, dan 
+        <span class="text-cyan-400 font-semibold">Tailwind CSS</span>.
+      </p>
+      <div class="flex flex-col md:flex-row items-center gap-4 justify-center md:justify-start">
+        <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-full font-medium transition">
+          Let's Talk
+        </a>
+        <a href="#projects" class="text-cyan-400 hover:text-white hover:bg-cyan-600 px-6 py-2 rounded-full font-medium transition">
+          See My Work
+        </a>
+      </div>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="relative w-64 h-72 md:w-72 md:h-80" data-aos="fade-left">
+      <img src="https://i.ibb.co/ZL0JmJ4/profile-example.jpg" alt="Ziqa Photo"
+        class="w-full h-full object-cover rounded-xl" />
+      <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500 opacity-10 rounded-full blur-3xl"></div>
+    </div>
+  </div>
+</section>
+
+    <!-- About -->
+    <section id="about" class="container mx-auto px-4 py-20" data-aos="fade-right">
+      <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">About Me</h3>
+      <p class="text-gray-300 leading-relaxed text-lg">
+        Saya adalah seorang Web Developer dengan fokus pada pengembangan antarmuka pengguna yang interaktif, modern, dan ramah pengguna. Berpengalaman dalam membangun aplikasi berbasis React, MongoDB, serta integrasi backend sederhana menggunakan Express/Node.js.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container mx-auto px-4 py-20" data-aos="fade-left">
+      <h3 class="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Skills</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="bg-gray-800 p-4 rounded-lg shadow">HTML</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">Tailwind CSS</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">React JS</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">MongoDB</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">Express JS</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">Node.js</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">Figma</div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow">Git</div>
+      </div>
+    </section>
+
+    <!-- Job Experience -->
+    <section id="experience" class="container mx-auto px-4 py-20" data-aos="fade-up">
+      <h3 class="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Job Experience</h3>
+      <div class="space-y-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold">IT Support Intern – PT. Kyoraku Blowmlding Indonesia</h4>
+          <p class="text-sm text-gray-400 mb-2">Apr 2024 – Present</p>
+          <ul class="list-disc ml-6 text-gray-300">
+            <li>Installasi perangkat keras dan perangkat lunak sesuai kebutuhan di pengguna.</li>
+            <li>Mendukung kebutuhan teknis 150 karyawan di setiap harinya.</li>
+            <li>Pemeliharaan secara rutin perangkat komputer, printer, jaringan, dan IoT. </li>
+            <li>Mengatasi masalah yang berhubungan dengan jaringan, hardware, dan software. </li>
+            <li>Management asset IT.</li>
+            <li>Menjalin komunikasi yang baik dengan pengguna, atasan, dan vendor.</li>
+            <li>•	Sosialisasi terhadap user mengenai hal-hal yang dapat membahayakan jaringan. </li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold">Freelance Web Developer</h4>
+          <p class="text-sm text-gray-400 mb-2">2020 – sekarang</p>
+          <ul class="list-disc ml-6 text-gray-300">
+            <li>Mengerjakan berbagai proyek web seperti e-katalog, sistem kuis, dan dashboard admin.</li>
+            <li>Mengembangkan aplikasi CRUD menggunakan React dan MongoDB.</li>
+            <li>Berperan dalam desain UI, pemrograman frontend, dan pengujian.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+<section id="projects" class="container mx-auto px-4 py-20" data-aos="fade-up">
+  <h3 class="text-4xl font-bold mb-12 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">My Projects</h3>
+  <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Project Card 1 -->
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+      <img src="https://source.unsplash.com/600x400/?website,app" alt="Project 1" class="w-full h-48 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold mb-2">E-Katalog Makanan</h4>
+        <p class="text-gray-400 mb-4">Sistem katalog makanan interaktif dengan fitur keranjang & checkout, dibangun menggunakan React & Tailwind CSS.</p>
+        <a href="#" class="text-cyan-400 hover:underline">Lihat Detail →</a>
+      </div>
+    </div>
+
+    <!-- Project Card 2 -->
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+      <img src="https://source.unsplash.com/600x400/?dashboard,analytics" alt="Project 2" class="w-full h-48 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold mb-2">Admin Dashboard</h4>
+        <p class="text-gray-400 mb-4">Dashboard untuk manajemen izin dan data pengguna dengan chart interaktif (Recharts).</p>
+        <a href="#" class="text-cyan-400 hover:underline">Lihat Detail →</a>
+      </div>
+    </div>
+
+    <!-- Project Card 3 -->
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+      <img src="https://source.unsplash.com/600x400/?quiz,education" alt="Project 3" class="w-full h-48 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold mb-2">Kuis Interaktif</h4>
+        <p class="text-gray-400 mb-4">Aplikasi kuis dengan 10 soal dinamis dan sistem skor langsung menggunakan React Hooks.</p>
+        <a href="#" class="text-cyan-400 hover:underline">Lihat Detail →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="container mx-auto px-4 py-20" data-aos="fade-up">
+      <h3 class="text-3xl font-bold mb-6">Contact</h3>
+      <p class="mb-4 text-gray-300">Ingin bekerja sama atau punya pertanyaan? Hubungi saya!</p>
+      <form class="space-y-4 max-w-lg">
+        <input type="text" placeholder="Nama" class="w-full p-2 bg-gray-800 rounded text-white" />
+        <input type="email" placeholder="Email" class="w-full p-2 bg-gray-800 rounded text-white" />
+        <textarea placeholder="Pesan" rows="4" class="w-full p-2 bg-gray-800 rounded text-white"></textarea>
+        <button type="submit" class="bg-cyan-500 px-6 py-2 rounded hover:bg-cyan-600">Kirim</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center text-sm text-gray-400">
+      © 2025 Ziqa. All rights reserved.
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <!-- Typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  const typed = new Typed("#typed", {
+    strings: ["Angga Qomaruzzaman", "Frontend Developer", "React Enthusiast"],
+    typeSpeed: 60,
+    backSpeed: 40,
+    backDelay: 1500,
+    loop: true,
+  });
+</script>
+
+<!-- tsParticles Sparkle Gradient -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-engine"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-interaction-external"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-color"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-opacity"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-out-modes"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-size"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-move-base"></script>
+<script>
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    background: { color: "#0f172a" },
+    fpsLimit: 60,
+    particles: {
+      number: { value: 80, density: { enable: true, area: 800 } },
+      color: {
+        value: ["#00ffff", "#38bdf8", "#f472b6", "#a78bfa"]
+      },
+      shape: { type: "circle" },
+      opacity: {
+        value: 0.4,
+        random: true,
+        anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false }
+      },
+      size: {
+        value: { min: 1, max: 3 },
+        anim: { enable: true, speed: 2, size_min: 0.5, sync: false }
+      },
+      move: {
+        enable: true,
+        speed: 0.5,
+        direction: "none",
+        random: true,
+        outModes: { default: "bounce" }
+      }
+    },
+    interactivity: {
+      events: { onhover: { enable: true, mode: "repulse" } },
+      modes: { repulse: { distance: 100 } }
+    },
+    detectRetina: true
+  });
+</script>
+
+
+  </body>
+</html>

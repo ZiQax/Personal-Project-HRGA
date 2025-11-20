@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    background-color: #E5E7EB;
+    position: relative;
+    display: flex;
+}
+
+.menu {
+    background: #111827;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.menu.tutup {
+    width: 70px;
+}
+
+.menu .logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 30px 0px 40px 0px;
+}
+
+.menu .logo img {
+    width: 50px;
+    height: 50px;;
+    margin: 10px;
+}
+
+.menu .logo h2 {
+    display: none;
+}
+
+.menu .item > li {
+    list-style-type: none;
+    padding: 15px 0px 0;
+    transition: 0.3s ease-in-out;
+}
+
+.menu .item li .tooltip {
+    position: absolute;
+    left: 12px;
+    height: 35px;
+    width: 122px;
+    margin-top: -45px;
+    transform: translateX(50%);
+    border-radius: 6px;
+    line-height: 35px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+
+.menu:not(.tutup) .item li .tooltip {
+    display: none;
+}
+
+.menu .item li:hover .tooltip {
+    opacity: 1;
+    transition: all 0.5s ease;
+    pointer-events: auto;
+    margin-top: -50px;
+}
+
+.menu .item li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 5px;
+  align-items: center;
+  color: #E5E7EB;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.menu .item li a:hover{
+    background-color: #253047;
+    cursor: pointer; 
+    border-radius: 10px;
+}
+
+.menu .item li:nth-child(1) {
+    /* border-left: 4px solid white; */
+}
+
+.menu .item li a i {
+    color: rgb(134, 141, 151);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 0px;
+    text-align: center;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 2px;
+    padding-top: 10px;
+    white-space: nowrap;
+}
+
+.menu .item li:hover i,
+.menu .item li:hover .label {
+    color: #08496e;
+}
+
+.menu .item li a .label {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.menu.tutup .item li a .label {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.menu .item li a .arrow {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.menu .item li.open a .arrow{
+    transform: rotate(180deg);
+}
+
+.menu.tutup .item li a .arrow{
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.menu .item li a .arrow i {
+  font-size: 15px;
+}
+
+.menu .item li .sub-menu {
+    max-height: 0;
+    padding-left: 10px;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+
+.menu:not(.tutup) .item li.open .sub-menu {
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto; /* <-- TAMBAHKAN INI */
+    transition: all 0.3s ease;
+}
+
+
+
+.menu .item li > .sub-menu  li {
+    list-style-type: none;
+    background: #111827;
+    transition: 0.3s ease-in-out;
+}
+
+.menu .item li > .sub-menu > li:hover {
+    background-color: #253047;
+    cursor: pointer; 
+    border-radius: 10px;
+}
+
+.menu .item li > .sub-menu li a {
+    font-size: 14px;
+    padding: 10px 20px;
+    display: block;
+    color: #E5E7EB;
+    text-decoration: none;
+}
+
+
+
+/* Default saat sidebar LEBAR */
+#intfc {
+  width: calc(100% - 50px);
+  margin-left: 70px;
+  transition: all 0.3s ease;
+}
+
+body.sidebar-open #intfc {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+}
+
+
+#intfc .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px 30px;
+    border-bottom:  3px solid #594ef7;
+    position: fixed;
+    transition: all 0.3s ease;
+    width: calc(100% - 70px);
+}
+
+body.sidebar-open #intfc .navigation {
+    width: calc(100% - 250px);
+}
+
+#intfc .navigation .search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #d7dbe7;
+    border-radius:  4px;
+}
+
+#intfc .navigation .search i {
+    margin-right: 14px;
+}
+
+#intfc .navigation .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#intfc .navigation .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#intfc .navigation .profile i {
+    margin-right: 20px;
+    font-size: 19px;
+    font-weight: 400px;
+}
+
+#intfc .navigation .profile img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+#intfc .ui {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    background: #d4dae7;
+    left: 80%;
+    width: 300px;
+    height: 250px;
+    border-radius: 7px;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+#intfc .ui.active {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+}
+
+
+.n1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#menbtn {
+    display: initial;
+    color: #2b2b2b;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.i-name {
+    color: #444a53;
+    padding: 30px 30px 0px 30px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 70px;
+}
+
+.value {
+  padding: 30px 100px 50px 100px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   column-gap: 20px;
+   row-gap: 20px;
+}
+
+.value .val-box {
+    background: #fff; 
+    padding: 16px 20px;
+    border-radius: 5px;
+    display: block;
+    border-bottom: 2px solid #594ef7;
+}
+
+
+.value .val-box .chart {
+   padding: 10px 10px 10px 10px;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   column-gap: 20px;
+   row-gap: 10px;
+}
+
+.value .val-box .chart .cont-prf {
+    background: #fff; 
+    padding: 16px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    width: 460px;
+    height: 650px;
+    border: 1px solid #594ef7;
+}
+
+.value .val-box .chart .cont-prf:nth-child(1) {
+    grid-row: span 2;
+}
+
+
+.value .val-box .chart .cont-prf:nth-child(2) {
+    grid-column: span 2;
+    width: 55vw;
+    height: 50%;
+}
+
+
+.value .val-box .chart .cont-prf:nth-child(3) {
+    grid-column: span 2;
+    margin-top: -28vh;
+    height: 360px;
+    width: 100%;
+}
+
+
+.value .val-box .chart .cont-prf .image-prf {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom: -10px;
+}
+
+.value .val-box .chart .cont-prf .image-prf > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.value .val-box .chart .cont-prf .name-prf {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.value .val-box .chart .cont-prf .name-prf > h4{
+    text-align: center;
+    font-size: 27px;
+    font-weight: 600;
+    color: #444a53;
+}
+
+.value .val-box .chart .cont-prf .name-prf > p{
+    text-align: center;
+    font-size: 19px;
+    font-weight:400;
+    color: #616468;
+}
+
+.value .val-box .chart .cont-prf .icnt-prf {
+   display: block;
+   width: 100%;
+   margin-top: 4vh;
+}
+
+.value .val-box .chart .cont-prf .icnt-prf .contact {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 30px;
+    margin-left: 30px;
+}
+
+.value .val-box .chart .cont-prf .icnt-prf .contact > i {
+    font-size: 17px;
+    width: 39px;
+    height: 39px;
+    line-height: 39px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background: #594ef7;
+    margin-right: 0px;
+}
+
+
+.value .val-box .chart .cont-prf .icnt-prf .contact > span{
+    text-align: center;
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight:400;
+    color: #616468;
+}
+
+
+
+
+@media (max-width: 769px) {
+    #menu {
+    width: 270px;
+    position: fixed;
+    left: -270px;
+    transition: 0.3s ease;
+}
+
+#menu.active {
+   left: 0px; 
+}
+#menbtn {
+    display: initial;
+}
+
+#intfc {
+    width:100%;
+    margin-left: 0;
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+#menu.active ~ #intfc {
+    width: calc(100% - 270px);
+    margin-left: 270px;
+     transition: 0.3s ease;
+}
+
+#intfc .navigation {
+   width: 100%;
+}
+
+.value {
+  padding: 30px 30px 0 30px;
+  justify-content: flex-start;
+  
+}
+
+.value .val-box {
+    padding: 16px 20px;
+    margin: 10px 20px 10px 0;
+}
+
+.papan {
+    width: 92%;
+    padding: 0;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+} 
+
+
+@media (max-width: 477px) {
+   #intfc .navigation {
+    padding: 15px;
+}
+
+#intfc .navigation .search input {
+    width: 150px;
+}
+
+.i-name {
+    padding: 30px 15px 0 15px;
+    
+}
+
+.value {
+    padding: 15px 15x 0 15px;
+    margin: 0;
+}
+
+.value .val-box {
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.papan {
+    margin: 30px 0px 30px 20px;
+}
+}
+
+@media (max-width: 640px) {
+    .i-name {
+    color: #444a53;
+    padding: 0px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 90px 0px 0px 0px;
+    text-align: center;
+}
+
+.value {
+    padding: 20px 0px 0 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 4px;
+    margin-right: 0px;
+}
+
+.value .val-box {
+    width: 48%;
+    margin: 5px 5px;
+}
+.papan {
+    width: 97%;
+    margin: 30px 0 30px 10px;
+    overflow: auto;
+    background: #fff;
+    border-radius: 8px;
+}
+
+@media (max-width: 360px){
+    .value .val-box {
+    width: 100%;
+    margin: 5px 5px;
+}
+}
+}

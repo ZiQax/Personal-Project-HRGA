@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Departement</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <section class="menu tutup">
+        <div class="logo">
+            <img src="icon.png">
+            <h2>Qiza</h2>
+        </div>
+        <div class="item">
+            <ul>
+                <li><i class="fa-solid fa-chart-simple"></i><span><a href="dashboard.html">Dashboard</a></span></li>
+                <li><i class="fa-solid fa-table-columns"></i><span><a href="departement.html">Departement</a></span>
+                </li>
+                <li><i class="fa-solid fa-clipboard"></i><span><a href="#">Inventory</a></span></li>
+                <li><i class="fa-solid fa-chart-pie"></i><span><a href="#">Report</a></span></li>
+                <li><i class="fa-solid fa-chart-simple"></i><span><a href="#">Maintenace</a></span></li>
+                <li><i class="fa-solid fa-key"></i><a href="#"><span>Login</a></span></li>
+            </ul>
+        </div>
+        </div>
+    </section>
+
+    <section id="intfc">
+        <div class="navigation">
+            <div class="n1">
+                <div>
+                    <i id="menbtn" class="fa-solid fa-bars"></i>
+                </div>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="search" id="search">
+                </div>
+            </div>
+            <div class="profile">
+                <i class="fa-solid fa-bell"></i>
+                <img src="image.jpg">
+            </div>
+        </div>
+
+        <h3 class="i-name">
+            Dashboard
+        </h3>
+
+        <div class="value">
+            <div class="val-box">
+                <i class="fa-solid fa-users"></i>
+                <div>
+                    <h3>150</h3>
+                    <span>Users</span>
+                </div>
+            </div>
+
+            <div class="val-box">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <div>
+                    <h3>10</h3>
+                    <span>10 requests</span>
+                </div>
+            </div>
+
+            <div class="val-box">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                    <h3>3</h3>
+                    <span>Approved</span>
+                </div>
+            </div>
+
+            <div class="val-box">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <div>
+                    <h3>2</h3>
+                    <span>Rejected</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dtainpt">
+            <input type="text" placeholder="Name" id="nme">
+            <input type="text" placeholder="Title" id="ttl">
+
+            <div class="custom-select" id="statusDrop">
+                <select id="rson" style="width:100%; margin:10px 0;">
+                    <option value="" disabled selected hidden>Pilih Status</option>
+                    <option value="pulang cepat">PC - Pulang Cepat</option>
+                    <option value="izin keluar">Ik - Izin Keluar</option>
+                    <option value="sakit">Sk - Sakit</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="papan">
+            <table width="100%" class="table">
+                <thead>
+                    <tr>
+                        <td class="name">Name</td>
+                        <td>Title</td>
+                        <td>Reason</td>
+                        <td>Status</td>
+                        <td><input type="checkbox" value="checkbox" id="selectAll"></td>
+                        <td><button type="button" id="delete">Delete all</button></td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="storage">
+            <button type="button" id="simpan">Simpan</button>
+        </div>
+
+        <!-- Modal Edit -->
+        <div id="modalEdit"
+            style="display:none; position:fixed; top:30%; left:35%; width:300px; background:#fff; padding:20px; border-radius:8px; border:1px solid #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index:1000;">
+            <label for="editValue">Edit Data:</label><br>
+            <input type="text" id="editName" style="width:100%; margin:10px 0;">
+            <input type="text" id="editTitle" style="width:100%; margin:10px 0;">
+            <input type="text" id="editReason" style="width:100%; margin:10px 0;">
+            <select id="editStatus" style="width:100%; margin:10px 0;">
+                <option value="" disabled selected hidden>Pilih Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="saveEdit">Simpan</button>
+                <button id="closeModal">Tutup</button>
+            </div>
+        </div>
+
+        <div id="modalDeleteSuccess" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
+     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
+            <strong>
+                <p>✅</p>
+                <p>Data berhasil dihapus!</p>
+            </strong>
+
+        </div>
+
+        <div id="modalSave" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
+     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
+            <strong>
+                <p>✅</p>
+                <p>Data Berhasil di ganti</p>
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

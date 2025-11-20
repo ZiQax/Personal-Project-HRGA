@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1144b3, #3d7bdb, #6a89cc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* ===== Container ===== */
+.container {
+  width: 100%;
+  max-width: 70vw;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  padding: 45px 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Judul ===== */
+.container .judul h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #222;
+  letter-spacing: 0.5px;
+}
+
+.container .judul h2::after {
+  content: "";
+  display: block;
+  margin: 12px auto 0;
+  width: 90px;
+  height: 4px;
+  background: linear-gradient(90deg, #1144b3, #3d7bdb);
+  border-radius: 3px;
+}
+
+/* ====== Conatainer Form-Group-1 ========= */
+.fg-1 {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== Input modern full row ===== */
+.dtainpt {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===== Form group biar rapi ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Konsistensi input, select, textarea */
+.dtainpt input,
+.dtainpt select,
+.dtainpt textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid #e0e4ec;
+  border-radius: 14px;
+  outline: none;
+  font-size: 15px;
+  background: #f9fafc;
+  transition: all 0.3s ease;
+}
+
+.dtainpt input:focus,
+.dtainpt select:focus,
+.dtainpt textarea:focus {
+  border-color: #1144b3;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(17, 68, 179, 0.25);
+  transform: scale(1.01);
+}
+
+/* Textarea biar lebih cakep */
+.dtainpt textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* ===== Native Select modern look ===== */
+.dtainpt select {
+  appearance: none;
+  background: #f9fafc
+    url("data:image/svg+xml;utf8,<svg fill='%231144b3' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")
+    no-repeat right 14px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+/* ===== Custom Dropdown (opsional kalau tetep dipake) ===== */
+.dtainpt .custom-select {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.custom-select .selected {
+  padding: 15px 18px;
+  background: #f9fafc;
+  border: 1px solid #e0e4ec;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.custom-select .selected:hover {
+  border-color: #1144b3;
+}
+
+.custom-select .options {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d7dbe7;
+  border-radius: 12px;
+  max-height: 0;
+  overflow-y: auto;
+  transition: max-height 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.custom-select.open .options {
+  max-height: 220px;
+}
+
+.custom-select .options div {
+  padding: 12px 18px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.custom-select .options div:hover {
+  background: #f0f4ff;
+  color: #1144b3;
+}
+
+/* ===== Tombol modern ===== */
+.dtainpt .butadd {
+  display: flex;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.dtainpt .butadd button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.dtainpt .butadd .tmbh {
+  background: linear-gradient(135deg, #1144b3, #3d7bdb);
+  color: #fff;
+}
+
+.dtainpt .butadd .tmbh:hover {
+  background: linear-gradient(135deg, #0d368a, #2c5faf);
+  transform: translateY(-2px);
+}
+
+.dtainpt .butadd .cnsl {
+  background: linear-gradient(135deg, #dc3545, #f87171);
+  color: #fff;
+}
+
+.dtainpt .butadd .cnsl:hover {
+  background: linear-gradient(135deg, #a71d2a, #e11d48);
+  transform: translateY(-2px);
+}
+
+/* ===== Modal ===== */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 28px 38px;
+  border-radius: 14px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-content p {
+  font-size: 16px;
+  margin-bottom: 18px;
+  color: #333;
+}
+
+.modal-content button {
+  padding: 10px 22px;
+  background: #1144b3;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.modal-content button:hover {
+  background: #0d368a;
+  transform: scale(1.05);
+}
+
+/* Matikan garis pemisah di bawah form-group khusus dropdown custom */
+.form-group,
+.form-group .custom-select,
+.form-group .custom-select .selected {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Kalau ada pseudo-element pembuat garis, hilangkan juga */
+.form-group::after,
+.form-group::before,
+.form-group .custom-select::after,
+.form-group .custom-select::before {
+  content: none !important;
+}
+
+/* Jika ada <hr> tersembunyi dari lib, sembunyikan */
+.form-group hr {
+  display: none !important;
+}
+
+/* Bonus: hilangkan “garis default” milik WebKit di kontrol form */
+.dtainpt select,
+.dtainpt input {
+  -webkit-appearance: none;
+}
+

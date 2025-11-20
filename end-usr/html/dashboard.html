@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<body>
+  <section class="menu tutup">
+    <div class="logo">
+      <img src="../aset/qlogo.svg">
+      <h2>Qiza</h2>
+    </div>
+    <ul class="item">
+      <li><a href="dashboard.html">
+          <i class="fa-solid fa-pager"></i>
+          <span class="label">Dashboard</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li class="kendaraan">
+        <a href="#">
+          <i class="fa-solid fa-code-pull-request"></i>
+          <span class="label">User Requests</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <ul class="sub-menu">
+          <li>
+             <a href="logRequestKendaraan.html">
+              <i class="fa-solid fa-car"></i>
+              <span>Request Kendaraan</span>
+            </a>
+          </li>
+          <li>
+            <a href="Booking.html">
+              <i class="fa-solid fa-person-walking-arrow-right"></i>
+              Request Izin Keluar
+            </a>
+          </li>
+          <li>
+            <a href="#">
+             <i class="fa-solid fa-tty"></i>
+              Service Request
+            </a>
+          </li>
+        </ul>
+        <span class="tooltip">Request</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="label">Analisa</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">Analisa</span>
+      </li>
+      <li>
+        <a href="DataUsers.html">
+          <i class="fa-solid fa-users"></i>
+          <span class="label">User</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <!-- <ul class="sub-menu">
+          <li><a href="#">Daily</a></li>
+          <li><a href="#">Weekly</a></li>
+          <li><a href="#">Monthly</a></li>
+        </ul> -->
+        <span class="tooltip">User</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-key"></i>
+          <span class="label">Login</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">Login</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>
+          <span class="label">History</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">History</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="intfc">
+    <div class="navigation">
+      <div class="n1">
+        <div>
+          <i id="menbtn" class="fa-solid fa-bars"></i>
+        </div>
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="search" id="search">
+          <button type="button" id="search-button"></button>
+        </div>
+        <button type="button" id="btnsrc">Search</button>
+      </div>
+
+      <div class="profile">
+        <i class="fa-solid fa-bell" id="notif-icon"></i>
+        <div class="notification-badge" id="notification-count">0</div>
+        <img id="iamge" src="../aset/image.jpg">
+      </div>
+    </div>
+
+    <div id="intfc">
+      <div class="ui">
+        <div class="user-info">
+          <h4 id="nam-u">Nama User</h4>
+          <p id="email-u">user@example.com</p>
+        </div>
+
+        <div class="actions">
+          <a href="profile.html" class="btn">Profile Setting</a>
+          <button id="logoutBtn" class="btn logout">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="value-container">
+        <div class="value-title">
+          <h3>Dashboard</h3>
+        </div>
+        <div class="value">
+          <div class="val-box">
+            <div class="lbl">
+              <h3>Peminjaman Kendaraan</h3>
+            </div>
+            <div class="chart" id="chart">
+
+            </div>
+          </div>
+
+          <div class="val-box">
+            <div class="lbl">
+              <h3>Izin Keluar</h3>
+            </div>
+            <div class="chart" id="chart1">
+
+            </div>
+          </div>
+
+          <div class="val-box">
+            <div class="lbl">
+              <h3>Top Recent Peminjaman</h3>
+            </div>
+            <div class="chart" id="chart2">
+
+            </div>
+          </div>
+
+          <div class="val-box">
+            <div class="lbl">
+              <h3>Top Recent Izin</h3>
+            </div>
+            <div class="chart" id="chart3">
+
+            </div>
+            <div class="vw">
+              <a href="">Lihat Detail<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="val-box">
+            <div class="lbl">
+              <h3>Top Recent Izin</h3>
+            </div>
+            <div class="chart" id="chart4">
+
+            </div>
+            <div class="vw">
+              <a href="Booking.html">Lihat Detail<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+    </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+
+  <script src="../logic/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+  <script>
+    fetch('http://localhost:3000/api/analitycs')
+      .then(res => res.json())
+      .then(resData => {
+
+        console.log(resData);
+
+        const labels = resData.labels;
+        const totals = resData.data;
+        // ambil nama bulan untuk label
+
+
+        var options = {
+          chart: {
+            type: 'bar',
+            height: 350,
+          },
+          series: [{
+            name: "Total Peminjaman",
+            data: totals,
+            onclick: () => {
+              window.location.href = "log.html";
+            }
+          }],
+          xaxis: {
+            categories: labels
+          },
+          colors: ['#1144b3'], // warna bar
+          title: {
+
+          }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+      });
+
+    fetch('http://localhost:3000/api/analitycs/izin')
+      .then(res => res.json())
+      .then(resData => {
+
+        console.log(resData);
+
+        const labels = resData.labels;
+        const totals = resData.data;
+        // ambil nama bulan untuk label
+
+        var options = {
+          chart: {
+            type: 'bar',
+            height: 350,
+            widht: '100%'
+          },
+          series: [{
+            name: "Total Peminjaman",
+            data: totals,
+            onclick: () => {
+              window.location.href = "log.html";
+            }
+          }],
+          xaxis: {
+            categories: labels
+          },
+          plotOptions: {
+            bar: {
+              distributed: true,
+            }
+          },
+
+          fill: {
+            colors: ['#F44336', '#E91E63', '#9C27B0']
+          },
+
+          title: {
+
+          }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart1"), options);
+        chart.render();
+      });
+
+    fetch('http://localhost:3000/api/analitycs/accum-status')
+      .then(res => res.json())
+      .then(resData => {
+
+        console.log(resData);
+
+        const labels = resData.labels;
+        const totals = resData.data;
+        // ambil nama bulan untuk label
+
+        var options = {
+          chart: {
+            type: 'donut',
+          },
+          series: totals,
+          labels: labels,
+          legend: {
+            show: true,
+            position: 'bottom'
+          },
+          title: {
+          }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+        chart.render();
+      });
+  </script>
+</body>
+
+</html>

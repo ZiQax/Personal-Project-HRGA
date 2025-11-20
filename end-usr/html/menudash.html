@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pass & Izin System</title>
+  <link rel="stylesheet" href="../css/menuDash.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo">
+      <h2>Company</h2>
+    </div>
+    <nav>
+      <ul>
+        <li class="active" onclick="loadPage('dashboard')">Dashboard</li>
+        <li onclick="loadPage('izin')">Izin Keluar</li>
+        <li onclick="loadPage('kendaraan')">Pass Kendaraan</li>
+        <li onclick="loadPage('laporan')">Laporan</li>
+        <li onclick="loadPage('setting')">Setting</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <header class="topbar">
+      <h1 id="page-title">Dashboard</h1>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+    
+    <section id="content">
+      <!-- konten dinamis diisi JS -->
+    </section>
+  </main>
+
+  <script src="../logic/menuDash.js"></script>
+</body>
+</html>

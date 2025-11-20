@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/reqCard.css">
+</head>
+
+<body>
+  <section class="menu tutup">
+    <div class="logo">
+      <img src="../aset/qlogo.svg">
+      <h2>Qiza</h2>
+    </div>
+    <ul class="item">
+      <li><a href="dashboard.html">
+          <i class="fa-solid fa-pager"></i>
+          <span class="label">Dashboard</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li class="kendaraan">
+        <a href="#">
+          <i class="fa-solid fa-car"></i>
+          <span class="label">Kendaraan</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <ul class="sub-menu">
+          <li>
+            <a href="Booking.html">
+              <i class="fa-solid fa-book"></i>
+              <span>Booking</span>
+            </a>
+          </li>
+          <li><a href="#">
+              <i class="fa-solid fa-database"></i>
+              Data Peminjaman
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-gear"></i>
+              Service
+            </a>
+          </li>
+        </ul>
+        <span class="tooltip">Kendaraan</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="label">Analisa</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">Analisa</span>
+      </li>
+      <li>
+        <a href="DataUsers.html">
+          <i class="fa-solid fa-users"></i>
+          <span class="label">User</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <!-- <ul class="sub-menu">
+          <li><a href="#">Daily</a></li>
+          <li><a href="#">Weekly</a></li>
+          <li><a href="#">Monthly</a></li>
+        </ul> -->
+        <span class="tooltip">User</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-key"></i>
+          <span class="label">Login</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">Login</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>
+          <span class="label">History</span>
+          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+        </a>
+        <span class="tooltip">History</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="intfc">
+    <div class="navigation">
+      <div class="n1">
+        <div>
+          <i id="menbtn" class="fa-solid fa-bars"></i>
+        </div>
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="search" id="search">
+          <button type="button" id="search-button"></button>
+        </div>
+        <button type="button" id="btnsrc">Search</button>
+      </div>
+
+      <div class="profile">
+        <i class="fa-solid fa-bell"></i>
+        <img id="iamge" src="../aset/image.jpg">
+      </div>
+    </div>
+
+    <div id="intfc">
+      <div class="ui">
+        <div class="user-info">
+          <h4 id="nam-u">Nama User</h4>
+          <p id="email-u">user@example.com</p>
+        </div>
+
+        <div class="actions">
+          <a href="profile.html" class="btn">Profile Setting</a>
+          <button id="logoutBtn" class="btn logout">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="value">
+      
+    </div>
+</section>
+
+
+  <script src="../logic/validator.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+
+  <script>
+
+  </script>
+</body>
+
+</html>

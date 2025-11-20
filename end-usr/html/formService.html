@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/formService.css">
+    <title>Form Izin</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dtainpt">
+        <form id="form">
+            <div class="judul">
+                <h2>Form Izin</h2>
+            </div>
+         
+                 <div class="custom-select" id="departementDropdown">
+                    <div class="selected">Pilih Title</div>
+                    <div class="options">
+                        <div data-value="2">Mobil</div>
+                        <div data-value="3">Motor</div>
+                    </div>
+                    <input type="hidden" placeholder="Departement" id="departement" name="kendaraan_id">
+                </div>
+
+                <input type="date" placeholder="tanggal" name="tanggal_service">
+                <input type="text" placeholder="deskrpsi" id="rson" name="deskripsi">
+                <input type="number" placeholder="Masukan Biaya" step="0.01" min="0" id="estimasi" name="biaya" required>
+                <div class="butadd">
+                    <button type="submit" class="tmbh">Add</button>
+                    <button type="submit" class="cnsl">Cancel</button>
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <button id="close-modal">Tutup</button>
+        </div>
+    </div>
+
+
+    <script src="../logic/formService.js"></script>
+</body>
+
+</html>

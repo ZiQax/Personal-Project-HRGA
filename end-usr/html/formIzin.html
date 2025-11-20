@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/form.css">
+    <title>Form Izin</title>
+</head>
+
+<body>
+    <div class="container">
+  <form id="form" class="dtainpt">
+    <div class="judul">
+      <h2>Form Izin</h2>
+    </div>
+
+  
+    <!-- Name -->
+    <div class="form-group">
+      <label for="nme">Nama</label>
+      <input type="text" id="nme" name="user_id" placeholder="Masukkan nama">
+    </div>
+
+    <div class="fg-1">
+    <!-- Departemen -->
+    <div class="form-group">
+      <label for="departement">Departemen</label>
+      <div class="custom-select" id="departementDropdown">
+        <div class="selected">Pilih Departemen</div>
+        <div class="options">
+          <div data-value="HRGA">HRGA</div>
+          <div data-value="FAS">FAS</div>
+          <div data-value="DE">Design Engineering</div>
+          <div data-value="Marketing">Marketing</div>
+          <div data-value="PUD">Purchasing</div>
+          <div data-value="PPIC">PPIC</div>
+          <div data-value="QAD">QAD</div>
+          <div data-value="PE">PE</div>
+          <div data-value="Production">Production</div>
+        </div>
+        <input type="hidden" id="departement" name="departement">
+      </div>
+    </div>
+  
+
+    <!-- Section -->
+    <div class="form-group">
+      <label for="section">Section</label>
+      <div class="custom-select" id="sectionDropdown">
+        <div class="selected">Pilih Section</div>
+        <div class="options">
+          <div data-value="HRD">HRD</div>
+          <div data-value="Finance">Finance</div>
+          <div data-value="DE">Design Engineering</div>
+          <div data-value="Marketing">Marketing</div>
+          <div data-value="PUD">Purchasing</div>
+          <div data-value="Planning">Planning</div>
+          <div data-value="QAD">QAD</div>
+          <div data-value="PE">PE</div>
+          <div data-value="Finishing">Finishing</div>
+        </div>
+        <input type="hidden" id="section" name="section">
+      </div>
+    </div>
+    </div>
+
+    <!-- Position -->
+    <div class="form-group">
+      <label for="position">Jabatan</label>
+      <div class="custom-select" id="positionDropdown">
+        <div class="selected">Pilih Jabatan</div>
+        <div class="options">
+          <div data-value="GM">GM - General Manager</div>
+          <div data-value="DGM">DGM - Deputy General Manager</div>
+          <div data-value="SM">SM - Senior Manager</div>
+          <div data-value="M">M - Manager</div>
+          <div data-value="DM">DM - Deputy Manager</div>
+          <div data-value="AM">AM - Assistant Manager</div>
+          <div data-value="SPV">SPV - Supervisor</div>
+          <div data-value="SC">SC - Senior Chief</div>
+          <div data-value="C">C - Chief</div>
+          <div data-value="SS">SS - Senior Staff</div>
+          <div data-value="S">S - Staff</div>
+          <div data-value="OTS">OTS - Outsource</div>
+          <div data-value="ITS">ITS - Intern</div>
+          <div data-value="PKL">PKL - PKL</div>
+        </div>
+        <input type="hidden" id="position" name="position">
+      </div>
+    </div>
+
+    <div class="fg-1">
+     <!-- Estimasi -->
+    <div class="form-group">
+      <label for="estimasi">Estimasi Waktu yang dibutuhkan</label>
+      <input type="time" id="estimasi" name="estimasi_keluar">
+    </div>
+
+    <div class="form-group">
+      <label for="estimasi">Tanggal</label>
+      <input type="date" id="estimasi" name="tanggal">
+    </div>
+
+    <!-- Alasan -->
+    <div class="form-group">
+      <label for="rson">Alasan</label>
+      <textarea id="rson" name="alasan" placeholder="Tulis alasan izin"></textarea>
+    </div>
+
+    <!-- Tombol -->
+    <div class="butadd">
+      <button type="submit" class="tmbh">Add</button>
+      <button type="button" class="cnsl">Cancel</button>
+    </div>
+  </form>
+</div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <button id="close-modal">Tutup</button>
+        </div>
+    </div>
+
+
+    <script src="../logic/form.js"></script>
+</body>
+
+</html>

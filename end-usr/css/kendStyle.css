@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Pop  pins', sans-serif;
+}
+
+body {
+    width: 100%;
+    background-color: #abb7cf;
+    position: relative;
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container .dtainpt {
+    width: 25%;
+    margin: 20px 0 30px 30px;
+    background: #fff;
+    padding: 17px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 1;
+}
+
+
+.dtainpt h2 {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.dtainpt input {
+    padding: 5px 10px;
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #d7dbe7;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 13px;
+}
+
+
+.dtainpt .custom-select {
+  margin-top: 10px;
+  width: 100%;
+  position: relative;
+  font-size: small;
+  color: #8a909e;
+  user-select: none;
+  margin-bottom: 13px;
+  height: 50px;
+}
+
+
+.custom-select .selected {
+  padding: 15px 10px;
+  background: #fff;
+  border: 1px solid #d7dbe7;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 50px;
+  z-index: 10;
+}
+
+.custom-select .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d7dbe7;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  max-height: 0;
+  overflow-y: scroll;
+  transition: max-height 0.3s ease;
+  z-index: 10;
+}
+
+
+.custom-select.open .options {
+  max-height: 75px;
+}
+
+.custom-select .options div {
+  padding: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-select .options div:hover {
+  background: #f1f1f1;
+}
+
+.dtainpt .butadd {
+    width: 100%;
+    margin-top: 20px;
+    display: block;
+    padding: 10px 0px;
+}
+
+.dtainpt .butadd .tmbh {
+    width: 100%;
+    margin-bottom: 10px;
+    background: #75b0d3;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.dtainpt .butadd .tmbh:hover {
+    background: #08496e;
+    color: #fff;
+}
+
+.dtainpt .butadd .cnsl {
+    width: 100%;
+    background-color: #f56767;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;   
+}
+
+.dtainpt .butadd .cnsl:hover {
+    background: #640d0d;
+    color: #fff;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

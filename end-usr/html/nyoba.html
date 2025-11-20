@@ -1,0 +1,55 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Mobilitas Kendaraan</title>
+</head>
+<body>
+  <h2>Input Mobilitas Kendaraan</h2>
+  <form id="mobilitasForm">
+    <label>user id</label><br>
+    <input type="text" name="NIK" required><br><br>
+    <label>Tanggal:</label>
+    <input type="text" name="nama" required><br><br>
+    <label>alasan (ID tujuan):</label><br>
+    <input type="text" name="postion" required><br><br>
+    <label>Estimasi: </label>
+    <input type="text" name="departement" required><br><br>
+    <label>Section</label>
+    <input type="text" name="section" required><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+     const mobilitasForm = document.getElementById('mobilitasForm');
+
+     mobilitasForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+      
+        const formData = new FormData(mobilitasForm);
+        const data = Object.fromEntries(formData);
+
+        console.log(data);
+      
+        try {
+          const response = await fetch('http://localhost:3000/api/uk', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+      
+          if (!response.ok) throw new Error(response.statusText);
+      
+          const result = await response.json();
+          console.log(result);
+        } catch (err) {
+          console.log(err);
+        }
+
+     })
+  </script>
+</body>
+</html>
