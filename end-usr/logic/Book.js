@@ -281,7 +281,7 @@ tmbh.addEventListener("click", (e) => {
   contAdd.innerHTML = `
     <div class="list-add">
     <ul>
-    <li><a href="form.html">Izin Keluar</a></li>
+    <li><a href="formIzin.html">Izin Keluar</a></li>
     <li>Peminjaman</li>
     <li>Service Support</li>
     </ul>

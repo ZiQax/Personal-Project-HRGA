@@ -102,7 +102,7 @@ const container = document.querySelector('.value')
 if(!container) return;
 
 try{
- const response = await fetch('http://localhost:3000/api/mobilitas');
+ const response = await fetch('http://localhost:3000/api/izin/log/pending');
  const data = await response.json();
 
  console.log(data);
