@@ -7,13 +7,13 @@ const getIzinKeluar = async (req, res) => {
         const data = await modelIzinKeluar.getAllIzin();
 
         if(!data || data.length === 0) {
-            return res.status(404).json({success: false, message : 'Not Found'});
+            return res.status(404).json({success: false, message : 'Not Data request'});
         }
 
         res.status(200).json({
             success: true,
             message : 'Success',
-            data
+            data,
         });
 
     } catch (err) {
@@ -124,7 +124,7 @@ const getRejectIzin = async (req, res) => {
         if(!data || data.length === 0 ) {
             return res.status(404).json({message : 'Data Tidak Ditemukan'});
         }
-
+         
         res.status(200).json({
             message : 'Data Berhasil Ditemukan',
             data
@@ -200,7 +200,7 @@ const updateIzinKeluar = async (req, res) => {
         }
 
 
-        const result = await modelIzinKeluar.updateIzin(status, id);
+        const result = await modelIzinKeluar.updateIzin(status, id);      
 
         res.status(201).json({
             message : 'Success',

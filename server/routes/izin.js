@@ -11,8 +11,8 @@ router.get('/log/approved', izinController.getApproveIzin);
 router.get('/log/pending', izinController.getPendIzin);
 router.get('/log/rejected', izinController.getRejectIzin);
 router.get('/log/:month', izinController.getByMonth);
-router.delete('/log/:id', izinController.deleteIzinKeluar);
-router.put('/log/update/:id', updateIzinKeluar);
+router.delete('/log/:id', izinController.deleteIzinKeluar) ;
+router.put('/log/update/:id',updateIzinKeluar);
 
 
 module.exports = router;

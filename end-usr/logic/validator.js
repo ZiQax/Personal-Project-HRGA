@@ -167,12 +167,13 @@ try{
 
 async function updateStatus(id, status, cardElement, container) {
   try {
-    const response = await fetch(`http://localhost:3000/api/mobilitas/edit/${id}`,{
+    const response = await fetch(`http://localhost:3000/api/izin/log/update/${id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ status })
+
     });
 
     console.log(response);
@@ -190,7 +191,7 @@ async function updateStatus(id, status, cardElement, container) {
     
     const remainingCards = container.querySelectorAll('.val-box');
     if(remainingCards.length === 0){
-      container.innerHTML = '<p>No pending requests.</p>';
+      container.innerHTML = `<h2>${response.message}</h2>`;
     }
 
   } catch (err) {
