@@ -3,8 +3,7 @@ const router = express.Router();
 const peminjamanKendaraan = require('../controlers/peminjamanKendaraan');
 const  {getPeminjamanKendaraan, getLogByMonth, addPeminjamanKendaraan, updatePeminjamanKendaraan, deletePeminjamanKendaraan}= require('../controlers/peminjamanKendaraan')
 const { paginatedKendaraan } = require('../middleware/pagination');
-const { get } = require('mongoose');
-const { route } = require('./authRoutes');
+
 
 
 router.get('/', getPeminjamanKendaraan);

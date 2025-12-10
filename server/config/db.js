@@ -20,9 +20,5 @@ db.getConnection((err, connect) => {
     }
 });
 
-db.query("SELECT 1 + 1 AS hasil", (err, rows) => {
-  if (err) console.error("DB ERROR:", err);
-  else console.log("Tes DB:", rows);
-});
 
 module.exports = db;
