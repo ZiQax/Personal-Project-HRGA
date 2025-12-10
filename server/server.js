@@ -12,6 +12,8 @@ const analitycsRoutes = require('./routes/anallitycs');
 const path = require('path');
 
 const app = express();
+
+
 // const server = http.createServer(app);
 // const io = socket(server, {
 //     path: '/socket.io',
@@ -27,6 +29,7 @@ const corsOptions = {
     allowedHeaders: ['Content-Type'],
 }
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +42,10 @@ app.use('/api/peminjaman', peminjamanRoutes);
 app.use('/api/uk', routesUk);
 app.use('/api/service', routesLog);
 app.use('/api/analitycs', analitycsRoutes);
+
+app.get('/', (req, res) => {
+    res.send(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
