@@ -126,7 +126,7 @@ FormRegister.addEventListener('submit', async(e) => {
 
          setTimeout(() => {
             if (result.user.role === 'admin') {
-               window.location.href = "dashboard.html";
+               window.location.href = "index.html";
             }else if (result.user.role === 'user') {
                window.location.href = "menudash.html";
             }else{
