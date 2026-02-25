@@ -32,21 +32,24 @@
     </section>
 
     <section id="intfc">
-        <div class="navigation">
+        <nav class="navigation">
             <div class="n1">
-                <div>
-                    <i id="menbtn" class="fa-solid fa-bars"></i>
-                </div>
+                <div id="menbtn"><i class="fa-solid fa-bars"></i></div>
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="search" id="search">
+                    <input type="text" placeholder="Search data..." id="search">
+                    <button type="button" id="search-button"></button>
                 </div>
             </div>
+
             <div class="profile">
-                <i class="fa-solid fa-bell"></i>
-                <img src="image.jpg">
+                <div style="position: relative;">
+                    <i class="fa-solid fa-bell" id="notif-icon"></i>
+                    <div class="notification-badge" id="notification-count">0</div>
+                </div>
+                <img id="iamge" src="../aset/image.jpg" alt="Profile">
             </div>
-        </div>
+        </nav>
 
         <h3 class="i-name">
             Dashboard

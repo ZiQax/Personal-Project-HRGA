@@ -1,5 +1,5 @@
 // services/hrgaService/notificationService.js
-import axios from "axios";
+import axios from 'axios'
 
 /**
  * Mengirim notifikasi ke Telegram
@@ -7,21 +7,21 @@ import axios from "axios";
  */
 export const sendNotification = async (message) => {
   try {
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    const token = process.env.TELEGRAM_BOT_TOKEN
+    const chatId = process.env.TELEGRAM_CHAT_ID
+    const url = `https://api.telegram.org/bot${token}/sendMessage`
 
     await axios.post(url, {
       chat_id: chatId,
-      text: message,
-    });
+      text: message
+    })
 
-    if(chatId && token === undefined){
-      throw new Error("Telegram bot token atau chat ID tidak ditemukan di environment variables.");
+    if (chatId && token === undefined) {
+      throw new Error('Telegram bot token atau chat ID tidak ditemukan di environment variables.')
     }
 
-    console.log("✅ Notifikasi terkirim:", message);
+    console.log('✅ Notifikasi terkirim:', message)
   } catch (err) {
-    console.error("❌ Gagal mengirim notifikasi:", err.message);
+    console.error('❌ Gagal mengirim notifikasi:', err.message)
   }
-};
+}

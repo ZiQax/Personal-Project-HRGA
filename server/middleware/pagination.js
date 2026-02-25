@@ -1,117 +1,18 @@
-const { getPaginatedIzin } = require("../models/modelIzin");
-const { getPaginatedPeminjamanKendaraan } = require("../models/modelPeminjamanKendaraan");
-const {getPaginationUser} = require('../models/userModel');
+const { getPaginatedIzin } = require('../models/modelIzin')
+const { getPaginatedPeminjamanKendaraan } = require('../models/modelPeminjamanKendaraan')
+const { getPaginationUser } = require('../models/userModel')
 
-  
+const paginationFunc = (modelFunction, name = 'Data') => {
+  return async (req, res, next) => {
+    try {
+      console.log(`Middleware ${name} mulai jalan...`) // Cek 1
+      const page = Number.parseInt(req.query.page) || 1
+      const limit = Number.parseInt(req.query.limit) || 10
 
-   const paginattedUser = async (req, res, next) => {
-    try{
-      const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
+      const result = await modelFunction(page, limit)
 
-
-      const results = await getPaginationUser(page, limit);
-
-      
-     const pagination = {
-        total_data: results.totalData,
-        total_pages: results.totalPages,
-        current_page: results.currentPage,
-        limit
-      }
-
-      if (page < results.totalPages) {
-        pagination.next = {
-          page: page + 1,
-          limit
-        }
-      }
-
-      if (page > 1) {
-        pagination.prev = {
-          page: page - 1,
-          limit
-        }
-      }
-
-     res.paginatedResults = {
-        status: true,
-        message : 'Data Berhasil Ditemukan',
-        data: results.data,
-        pagination
-     }
-
-      next();
-
-      }
-      catch(e){
-        console.log("pagination error", e);
-        return res.status(500).json({
-            message : 'Database Error',
-            error : e
-        })
-      }
-  }
-
-
-  const paginatted = async (req, res, next) => {
-    try{
-      const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
-
-
-      const results = await getPaginatedIzin(page, limit);
-
-      
-     const pagination = {
-        total_data: results.totalData,
-        total_pages: results.totalPages,
-        current_page: results.currentPage,
-        limit
-      }
-
-      if (page < results.totalPages) {
-        pagination.next = {
-          page: page + 1,
-          limit
-        }
-      }
-
-      if (page > 1) {
-        pagination.prev = {
-          page: page - 1,
-          limit
-        }
-      }
-
-     res.paginatedResults = {
-        status: true,
-        message : 'Data Berhasil Ditemukan',
-        data: results.data,
-        pagination
-     }
-
-      next();
-
-      }
-      catch(e){
-        console.log("pagination error", e);
-        return res.status(500).json({
-            message : 'Database Error',
-            error : e
-        })
-      }
-  }
-
-const paginatedKendaraan = async (req, res, next) => {
-   try{
-     const page = parseInt(req.query.page) || 1;
-     const limit = parseInt(req.query.limit) || 10;
-
-     const result = await getPaginatedPeminjamanKendaraan(page, limit);
-
-     const pagination = {
-        totalData: result.totalData,
+      const pagination = {
+        total_data: result.totalData,
         total_pages: result.totalPages,
         current_page: result.currentPage,
         limit
@@ -124,7 +25,7 @@ const paginatedKendaraan = async (req, res, next) => {
         }
       }
 
-      if (page > 1){
+      if (page > 1) {
         pagination.prev = {
           page: page - 1,
           limit
@@ -132,27 +33,175 @@ const paginatedKendaraan = async (req, res, next) => {
       }
 
       res.paginatedResults = {
-        status : true,
-        message : 'Data Berhasil Ditemukan',
-        data : result.data,
+        status: true,
+        message: `${name} Berhasil Ditemukan`,
+        data: result.data,
         pagination
       }
 
-      next();
-      }
-      catch(e){
-        console.log('data tidak dapat ditemukan', e);
-        return res.status(500).json({
-            message : 'Database Error',
-            error : e
-        })
-      }
+      next()
+    } catch (e) {
+      console.log('pagination error', e)
+      return res.status(500).json({
+        message: 'Database Error',
+        error: e
+      })
+    }
   }
+}
 
+const paginattedUser = paginationFunc(getPaginationUser, 'User')
+const paginattedIzin = paginationFunc(getPaginatedIzin, 'Izin')
+const paginattedPeminjamanKendaraan = paginationFunc(getPaginatedPeminjamanKendaraan, 'Peminjaman Kendaraan')
 
+//    const paginattedUser = async (req, res, next) => {
+//     try{
+//       const page = parseInt(req.query.page) || 1;
+//       const limit = parseInt(req.query.limit) || 10;
+
+//       const results = await getPaginationUser(page, limit);
+
+//      const pagination = {
+//         total_data: results.totalData,
+//         total_pages: results.totalPages,
+//         current_page: results.currentPage,
+//         limit
+//       }
+
+//       if (page < results.totalPages) {
+//         pagination.next = {
+//           page: page + 1,
+//           limit
+//         }
+//       }
+
+//       if (page > 1) {
+//         pagination.prev = {
+//           page: page - 1,
+//           limit
+//         }
+//       }
+
+//      res.paginatedResults = {
+//         status: true,
+//         message : 'Data Berhasil Ditemukan',
+//         data: results.data,
+//         pagination
+//      }
+
+//       next();
+
+//       }
+//       catch(e){
+//         console.log("pagination error", e);
+//         return res.status(500).json({
+//             message : 'Database Error',
+//             error : e
+//         })
+//       }
+//   }
+
+//   const paginatted = async (req, res, next) => {
+//     try{
+//       const page = parseInt(req.query.page) || 1;
+//       const limit = parseInt(req.query.limit) || 10;
+
+//       const results = await getPaginatedIzin(page, limit);
+
+//      const pagination = {
+//         total_data: results.totalData,
+//         total_pages: results.totalPages,
+//         current_page: results.currentPage,
+//         limit
+//       }
+
+//       if (page < results.totalPages) {
+//         pagination.next = {
+//           page: page + 1,
+//           limit
+//         }
+//       }
+
+//       if (page > 1) {
+//         pagination.prev = {
+//           page: page - 1,
+//           limit
+//         }
+//       }
+
+//      res.paginatedResults = {
+//         status: true,
+//         message : 'Data Berhasil Ditemukan',
+//         data: results.data,
+//         pagination
+//      }
+
+//       next();
+
+//       }
+//       catch(e){
+//         console.log("pagination error", e);
+//         return res.status(500).json({
+//             message : 'Database Error',
+//             error : e
+//         })
+//       }
+//   }
+
+// const paginatedKendaraan = async (req, res, next) => {
+//    try{
+//      const page = parseInt(req.query.page) || 1;
+//      const limit = parseInt(req.query.limit) || 10;
+
+//      const result = await getPaginatedPeminjamanKendaraan(page, limit);
+
+//      const pagination = {
+//         totalData: result.totalData,
+//         total_pages: result.totalPages,
+//         current_page: result.currentPage,
+//         limit
+//       }
+
+//       if (page < result.totalPages) {
+//         pagination.next = {
+//           page: page + 1,
+//           limit
+//         }
+//       }
+
+//       if (page > 1){
+//         pagination.prev = {
+//           page: page - 1,
+//           limit
+//         }
+//       }
+
+//       res.paginatedResults = {
+//         status : true,
+//         message : 'Data Berhasil Ditemukan',
+//         data : result.data,
+//         pagination
+//       }
+
+//       next();
+//       }
+//       catch(e){
+//         console.log('data tidak dapat ditemukan', e);
+//         return res.status(500).json({
+//             message : 'Database Error',
+//             error : e
+//         })
+//       }
+//   }
+
+// module.exports = {
+//    paginattedUser,
+//    paginatted,
+//    paginatedKendaraan
+// }
 
 module.exports = {
-   paginattedUser,
-   paginatted,
-   paginatedKendaraan
+  paginattedUser,
+  paginattedIzin,
+  paginattedPeminjamanKendaraan
 }

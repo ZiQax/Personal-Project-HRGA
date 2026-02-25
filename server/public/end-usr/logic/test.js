@@ -70,69 +70,68 @@
 // // 🔹 Load pertama kali
 // loadData();
 
-let currentPage = 1;
-  const limit = 10;
-  const apiURL = "http://localhost:3000/api/izin/log/pagination";
+const currentPage = 1
+const limit = 10
+const apiURL = 'http://localhost:3000/api/izin/log/pagination'
 
-  async function loadIzin(page = 1) {
-    try {
-      const res = await fetch(`${apiURL}?page=${page}&limit=${limit}`);
-      const result = await res.json();
+async function loadIzin (page = 1) {
+  try {
+    const res = await fetch(`${apiURL}?page=${page}&limit=${limit}`)
+    const result = await res.json()
 
-      if (!res.ok || result.status === false) {
-        throw new Error(result.message || "Gagal memuat data");
-      }
-
-      // Ambil data izin
-      const izinList = result.data || [];
-
-      // Render data tabel
-      renderTable(izinList);
-
-      // Update pagination dari result.pagination (bukan result.data)
-      updatePagination(result.pagination);
-
-    } catch (err) {
-      console.error("Gagal ambil data:", err);
+    if (!res.ok || result.status === false) {
+      throw new Error(result.message || 'Gagal memuat data')
     }
+
+    // Ambil data izin
+    const izinList = result.data || []
+
+    // Render data tabel
+    renderTable(izinList)
+
+    // Update pagination dari result.pagination (bukan result.data)
+    updatePagination(result.pagination)
+  } catch (err) {
+    console.error('Gagal ambil data:', err)
   }
+}
 
-  function renderTable(data) {
-    const tbody = document.getElementById("body");
-    tbody.innerHTML = "";
+function renderTable (data) {
+  const tbody = document.getElementById('body')
+  tbody.innerHTML = ''
 
-    data.forEach((item, index) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
+  data.forEach((item, index) => {
+    const tr = document.createElement('tr')
+    tr.innerHTML = `
         <td>${index + 1}</td>
         <td>${item.user_id}</td>
-        <td>${item.tanggal ?? "-"}</td>
+        <td>${item.tanggal ?? '-'}</td>
         <td>${item.status}</td>
-      `;
-      tbody.appendChild(tr);
-    });
+      `
+    tbody.appendChild(tr)
+  })
+}
+
+function updatePagination (pagination) {
+  const { current_page, total_pages, next, prev } = pagination
+  const pageInfo = document.getElementById('pageInfo')
+  const prevBtn = document.getElementById('prevBtn')
+  const nextBtn = document.getElementById('nextBtn')
+
+  pageInfo.textContent = `Page ${current_page} of ${total_pages}`
+
+  // tombol prev
+  prevBtn.disabled = !prev
+  prevBtn.onclick = () => {
+    if (prev) loadIzin(prev.page)
   }
 
-  function updatePagination(pagination) {
-    const { current_page, total_pages, next, prev } = pagination;
-    const pageInfo = document.getElementById("pageInfo");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-
-    pageInfo.textContent = `Page ${current_page} of ${total_pages}`;
-
-    // tombol prev
-    prevBtn.disabled = !prev;
-    prevBtn.onclick = () => {
-      if (prev) loadIzin(prev.page);
-    };
-
-    // tombol next
-    nextBtn.disabled = !next;
-    nextBtn.onclick = () => {
-      if (next) loadIzin(next.page);
-    };
+  // tombol next
+  nextBtn.disabled = !next
+  nextBtn.onclick = () => {
+    if (next) loadIzin(next.page)
   }
+}
 
-  // Load pertama kali
-  loadIzin(currentPage);
+// Load pertama kali
+loadIzin(currentPage)

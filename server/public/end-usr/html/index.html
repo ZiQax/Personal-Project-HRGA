@@ -1,232 +1,340 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="../css/dashboard.css">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Command Center</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 
 <body>
-  <section class="menu tutup">
-    <div class="logo">
-      <img src="../aset/qlogo.svg">
-      <h2>Qiza</h2>
-    </div>
-    <ul class="item">
-      <li><a href="index.html">
-          <i class="fa-solid fa-pager"></i>
-          <span class="label">Dashboard</span>
-          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
-        <span class="tooltip">Dashboard</span>
-      </li>
-      <li class="kendaraan">
-        <a href="#">
-          <i class="fa-solid fa-code-pull-request"></i>
-          <span class="label">User Requests</span>
-          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
-        <ul class="sub-menu">
-          <li>
-             <a href="logRequestKendaraan.html">
-              <i class="fa-solid fa-car"></i>
-              <span>Request Kendaraan</span>
-            </a>
-          </li>
-          <li>
-            <a href="Booking.html">
-              <i class="fa-solid fa-person-walking-arrow-right"></i>
-              Request Izin Keluar
-            </a>
-          </li>
-          <li>
-            <a href="adminValidator.html">
-             <i class="fa-solid fa-tty"></i>
-              Service Request
-            </a>
-          </li>
+
+    <section class="menu tutup">
+        <div class="logo">
+            <img src="../aset/qlogo.svg" alt="Logo">
+            <h2>Qiza</h2>
+        </div>
+        
+        <ul class="item">
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-pager"></i>
+                    <span class="label">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            
+            <li class="kendaraan">
+                <a href="#">
+                    <i class="fa-solid fa-code-pull-request"></i>
+                    <span class="label">User Requests</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="logRequestKendaraan.html">
+                            <i class="fa-solid fa-car"></i>
+                            <span>Request Kendaraan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Booking.html">
+                            <i class="fa-solid fa-person-walking-arrow-right"></i>
+                            <span>Request Izin Keluar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adminValidator.html">
+                            <i class="fa-solid fa-tty"></i>
+                            <span>Service Request</span>
+                        </a>
+                    </li>
+                </ul>
+                <span class="tooltip">Request</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span class="label">Analisa</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">Analisa</span>
+            </li>
+
+            <li>
+                <a href="DataUsers.html">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="label">User</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">User</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-key"></i>
+                    <span class="label">Login</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">Login</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="label">History</span>
+                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                </a>
+                <span class="tooltip">History</span>
+            </li>
         </ul>
-        <span class="tooltip">Request</span>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-chart-pie"></i>
-          <span class="label">Analisa</span>
-          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
-        <span class="tooltip">Analisa</span>
-      </li>
-      <li>
-        <a href="DataUsers.html">
-          <i class="fa-solid fa-users"></i>
-          <span class="label">User</span>
-          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
-        <!-- <ul class="sub-menu">
-          <li><a href="#">Daily</a></li>
-          <li><a href="#">Weekly</a></li>
-          <li><a href="#">Monthly</a></li>
-        </ul> -->
-        <span class="tooltip">User</span>
-      </li>
-      <li>
-        <a href="#"><i class="fa-solid fa-key"></i>
-          <span class="label">Login</span>
-          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
-        <span class="tooltip">Login</span>
-      </li>
-      <li>
-        <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>
-          <span class="label">History</span>
-          <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-        </a>
-        <span class="tooltip">History</span>
-      </li>
-    </ul>
-  </section>
+    </section>
 
-  <section id="intfc">
-    <div class="navigation">
-      <div class="n1">
-        <div>
-          <i id="menbtn" class="fa-solid fa-bars"></i>
-        </div>
-        <div class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="search" id="search">
-          <button type="button" id="search-button"></button>
-        </div>
-        <button type="button" id="btnsrc">Search</button>
-      </div>
+    <section id="intfc">
+        
+        <nav class="navigation">
+            <div class="n1">
+                <div id="menbtn"><i class="fa-solid fa-bars"></i></div>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search data..." id="search">
+                    <button type="button" id="search-button"></button>
+                </div>
+            </div>
 
-      <div class="profile">
-        <i class="fa-solid fa-bell" id="notif-icon"></i>
-        <div class="notification-badge" id="notification-count">0</div>
-        <img id="iamge" src="../aset/image.jpg">
-      </div>
-    </div>
+            <div class="profile">
+                <div style="position: relative;">
+                    <i class="fa-solid fa-bell" id="notif-icon"></i>
+                    <div class="notification-badge" id="notification-count">0</div>
+                </div>
+                <img id="iamge" src="../aset/image.jpg" alt="Profile">
+            </div>
+        </nav>
 
-    <div id="intfc">
-      <div class="ui">
-        <div class="user-info">
-          <h4 id="nam-u">Nama User</h4>
-          <p id="email-u">user@example.com</p>
+        <div class="ui">
+            <div class="user-info">
+                <h4 id="nam-u">Nama User</h4>
+                <p id="email-u">user@example.com</p>
+            </div>
+            <div class="actions">
+                <a href="profile.html" class="btn">Profile Setting</a>
+                <button id="logoutBtn" class="btn logout">Logout</button>
+            </div>
         </div>
 
-        <div class="actions">
-          <a href="profile.html" class="btn">Profile Setting</a>
-          <button id="logoutBtn" class="btn logout">Logout</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="main">
-      <div class="value-container">
-        <div class="value-title">
-          <h3>Dashboard</h3>
-        </div>
-        <div class="value">
-          <div class="val-box">
-            <div class="lbl">
-              <h3>Peminjaman Kendaraan</h3>
+        <div class="main">
+            
+            <div class="header-title">
+                <h3>HR Command Center</h3>
+                <p>Overview aktivitas karyawan dan aset perusahaan hari ini.</p>
             </div>
-            <div class="chart" id="chart">
 
+            <div class="kpi-container">
+                <div class="kpi-card">
+                    <div class="icon-bg blue"><i class="fa-solid fa-users"></i></div>
+                    <div class="kpi-info">
+                        <span>Total Karyawan</span>
+                        <h4>142</h4>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="icon-bg orange"><i class="fa-solid fa-person-walking-arrow-right"></i></div>
+                    <div class="kpi-info">
+                        <span>Izin/Cuti Hari Ini</span>
+                        <h4>8 <small>Orang</small></h4>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="icon-bg red"><i class="fa-solid fa-bell"></i></div>
+                    <div class="kpi-info">
+                        <span>Pending Request</span>
+                        <h4>12 <small>Menunggu</small></h4>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="icon-bg green"><i class="fa-solid fa-car"></i></div>
+                    <div class="kpi-info">
+                        <span>Kendaraan Ready</span>
+                        <h4>5 <small>Unit</small></h4>
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div class="val-box">
-            <div class="lbl">
-              <h3>Izin Keluar</h3>
-            </div>
-            <div class="chart" id="chart1">
+            <div class="value">
+                
+                <div class="val-box">
+                    <div class="lbl">
+                        <h3>Statistik Peminjaman</h3>
+                        <button class="btn-mini" style="border:none; background:transparent;"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart"></div> 
+                    </div>
+                </div>
 
-            </div>
-          </div>
+                <div class="val-box">
+                    <div class="lbl">
+                        <h3>Tren Izin Keluar</h3>
+                        <button class="btn-mini" style="border:none; background:transparent;"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart1"></div> 
+                    </div>
+                </div>
 
-          <div class="val-box">
-            <div class="lbl">
-              <h3>Top Recent Peminjaman</h3>
-            </div>
-            <div class="chart" id="chart2">
+                <div class="val-box side-box">
+                    <div class="lbl">
+                        <h3>Rasio Status Request</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart2"></div> 
+                    </div>
+                </div>
 
-            </div>
-          </div>
+                <div class="val-box full-width">
+                    <div class="lbl">
+                        <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                            <h3>Request Terbaru (Butuh Approval)</h3>
+                            <a href="logRequestKendaraan.html" style="font-size:12px; color:#3b82f6; text-decoration:none;">Lihat Semua</a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Tipe Request</th>
+                                    <th>Tanggal</th>
+                                    <th>Alasan/Tujuan</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-table-body">
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <img src="../aset/image.jpg" alt="user">
+                                            <span>Budi Santoso</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge vehicle">Kendaraan</span></td>
+                                    <td>20 Dec 2025</td>
+                                    <td>Meeting Client di Karawang</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td><i class="fa-solid fa-pen-to-square action-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <img src="../aset/image.jpg" alt="user">
+                                            <span>Siti Aminah</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge leave">Izin Keluar</span></td>
+                                    <td>20 Dec 2025</td>
+                                    <td>Urusan Keluarga</td>
+                                    <td><span class="status approved">Approved</span></td>
+                                    <td><i class="fa-solid fa-eye action-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <img src="../aset/image.jpg" alt="user">
+                                            <span>Rian Eka</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge vehicle">Kendaraan</span></td>
+                                    <td>19 Dec 2025</td>
+                                    <td>Survey Lokasi</td>
+                                    <td><span class="status rejected">Rejected</span></td>
+                                    <td><i class="fa-solid fa-eye action-icon"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-          <div class="val-box">
-            <div class="lbl">
-              <h3>Top Recent Izin</h3>
-            </div>
-            <div class="chart" id="chart3">
+            </div> 
+      </div> 
+</section>
 
-            </div>
-            <div class="vw">
-              <a href="">Lihat Detail<i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="../logic/dashboard.js"></script>
 
-          <div class="val-box">
-            <div class="lbl">
-              <h3>Top Recent Izin</h3>
-            </div>
-            <div class="chart" id="chart4">
-
-            </div>
-            <div class="vw">
-              <a href="Booking.html">Lihat Detail<i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
-    </div>
-    </div>
-  </section>
-
-  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
-
-  <script src="../logic/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
   <script>
+    // Common Options buat Chart biar konsisten stylenya
+    const commonOptions = {
+      fontFamily: 'Poppins, sans-serif',
+      toolbar: { show: false }, // Ilangin menu toolbar chart
+      grid: {
+        show: false, // Ilangin garis-garis background grid
+        padding: { top: 0, right: 0, bottom: 0, left: 10 }
+      },
+      dataLabels: { enabled: false } // Ilangin angka di tengah batang biar bersih
+    };
+
+    // 1. CHART PEMINJAMAN (Bar Chart)
     fetch('http://localhost:3000/api/analitycs')
       .then(res => res.json())
       .then(resData => {
-
-        console.log(resData);
-
         const labels = resData.labels;
         const totals = resData.data;
-        // ambil nama bulan untuk label
-
 
         var options = {
-          chart: {
-            type: 'bar',
-            height: 350,
-          },
           series: [{
             name: "Total Peminjaman",
-            data: totals,
-            onclick: () => {
-              window.location.href = "log.html";
-            }
+            data: totals
           }],
-          xaxis: {
-            categories: labels
+          chart: {
+            type: 'bar',
+            height: 320,
+            fontFamily: 'Poppins, sans-serif',
+            toolbar: { show: false },
+            events: {
+              click: function(chart, w, e) {
+                 window.location.href = "log.html";
+              }
+            }
           },
-          colors: ['#1144b3'], // warna bar
-          title: {
-
+          plotOptions: {
+            bar: {
+              borderRadius: 8, // Bikin batang melengkung (estetik)
+              columnWidth: '50%', // Lebar batang pas, ga kegedean
+              borderRadiusApplication: 'end',
+            }
+          },
+          dataLabels: { enabled: false },
+          xaxis: {
+            categories: labels,
+            axisBorder: { show: false },
+            axisTicks: { show: false },
+            labels: {
+              style: { colors: '#64748b', fontSize: '12px' }
+            }
+          },
+          yaxis: {
+            show: true,
+            labels: {
+              style: { colors: '#64748b', fontSize: '12px' }
+            }
+          },
+          grid: {
+            borderColor: '#f1f5f9',
+            strokeDashArray: 4, // Garis putus-putus halus
+          },
+          colors: ['#3b82f6'], // WARNA UTAMA (Biru Modern)
+          fill: {
+            opacity: 1
           }
         };
 
@@ -234,79 +342,106 @@
         chart.render();
       });
 
+    // 2. CHART IZIN KELUAR (Multi Color Bar)
     fetch('http://localhost:3000/api/analitycs/izin')
       .then(res => res.json())
       .then(resData => {
-
-        console.log(resData);
-
         const labels = resData.labels;
         const totals = resData.data;
-        // ambil nama bulan untuk label
 
         var options = {
+          series: [{
+            name: "Total Izin",
+            data: totals
+          }],
           chart: {
             type: 'bar',
-            height: 350,
-            widht: '100%'
-          },
-          series: [{
-            name: "Total Peminjaman",
-            data: totals,
-            onclick: () => {
-              window.location.href = "log.html";
+            height: 320,
+            fontFamily: 'Poppins, sans-serif',
+            toolbar: { show: false },
+            events: {
+               click: function() { window.location.href = "log.html"; }
             }
-          }],
-          xaxis: {
-            categories: labels
           },
           plotOptions: {
             bar: {
-              distributed: true,
+              distributed: true, // Biar warnanya beda-beda tiap batang
+              borderRadius: 8,
+              columnWidth: '50%',
+              borderRadiusApplication: 'end',
             }
           },
-
-          fill: {
-            colors: ['#F44336', '#E91E63', '#9C27B0']
+          dataLabels: { enabled: false },
+          legend: { show: false }, // Umpetin legend karena warna-warni
+          xaxis: {
+            categories: labels,
+            axisBorder: { show: false },
+            axisTicks: { show: false },
+            labels: { style: { colors: '#64748b' } }
           },
-
-          title: {
-
-          }
+          grid: { show: false }, // Bersih tanpa grid
+          // Warna-warni modern (Biru, Ungu, Orange)
+          colors: ['#3b82f6', '#8b5cf6', '#f59e0b', '#10b981'], 
         };
 
         var chart = new ApexCharts(document.querySelector("#chart1"), options);
         chart.render();
       });
 
+    // 3. CHART STATUS (Donut Chart)
     fetch('http://localhost:3000/api/analitycs/accum-status')
       .then(res => res.json())
       .then(resData => {
-
-        console.log(resData);
-
         const labels = resData.labels;
         const totals = resData.data;
-        // ambil nama bulan untuk label
 
         var options = {
-          chart: {
-            type: 'donut',
-          },
           series: totals,
           labels: labels,
-          legend: {
-            show: true,
-            position: 'bottom'
+          chart: {
+            type: 'donut',
+            height: 350,
+            fontFamily: 'Poppins, sans-serif',
           },
-          title: {
-          }
-        }
+          plotOptions: {
+            pie: {
+              donut: {
+                size: '75%', // Bolongan tengah agak gede biar elegan
+                labels: {
+                  show: true,
+                  name: { show: true, fontSize: '14px', fontFamily: 'Poppins, sans-serif' },
+                  value: { 
+                    show: true, fontSize: '24px', fontWeight: 700,
+                    formatter: function (val) { return val }
+                  },
+                  total: {
+                    show: true,
+                    showAlways: true,
+                    label: 'Total',
+                    fontSize: '14px',
+                    color: '#64748b'
+                  }
+                }
+              }
+            }
+          },
+          dataLabels: { enabled: false }, // Ilangin angka di juring lingkaran
+          stroke: { show: false }, // Ilangin border putih antar potongan
+          legend: {
+            position: 'bottom',
+            fontSize: '14px',
+            fontFamily: 'Poppins, sans-serif',
+            markers: { radius: 12 }, // Bulatin marker legend
+            itemMargin: { horizontal: 10, vertical: 5 }
+          },
+          // Warna Status: Pending(Kuning), Approved(Hijau), Rejected(Merah)
+          // Sesuaikan urutan datamu di backend, ini contoh urutan umum:
+          colors: ['#f59e0b', '#10b981', '#ef4444', '#3b82f6'] 
+        };
 
         var chart = new ApexCharts(document.querySelector("#chart2"), options);
         chart.render();
       });
   </script>
 </body>
-
 </html>

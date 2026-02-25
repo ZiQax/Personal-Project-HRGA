@@ -1,25 +1,25 @@
-const { type } = require("./peminjamanKendaraan");
+const { type } = require('./peminjamanKendaraan')
 
 const dataMoilitas = {
-     labels: [
-    "Toyota Avanza",
-    "Daihatsu GrandMax"
+  labels: [
+    'Toyota Avanza',
+    'Daihatsu GrandMax'
   ],
-    logData: {
+  logData: {
     Jan: [
       {
-        nama: "Ziqa",
-        title: "Senior Staff",
-        reason: "Sakit",
-        date: "2023-01-01",
-        status: "Pending",
-      },
-    ],
-},
+        nama: 'Ziqa',
+        title: 'Senior Staff',
+        reason: 'Sakit',
+        date: '2023-01-01',
+        status: 'Pending'
+      }
+    ]
+  },
   height: 350,
   width: 350,
-  type: "radialBar",
-  series: [67, 45,],
+  type: 'radialBar',
+  series: [67, 45],
   plotOptions: {
     radialBar: {
       dataLabels: {
@@ -29,9 +29,8 @@ const dataMoilitas = {
         }
       }
     }
-  },
-  
+  }
 
 }
 
-module.exports = dataMoilitas;
+module.exports = dataMoilitas

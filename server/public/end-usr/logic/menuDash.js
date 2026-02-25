@@ -1,23 +1,23 @@
-function loadPage(page) {
-  const title = document.getElementById("page-title");
-  const content = document.getElementById("content");
+function loadPage (page) {
+  const title = document.getElementById('page-title')
+  const content = document.getElementById('content')
 
-  document.querySelectorAll(".sidebar ul li").forEach(li => li.classList.remove("active"));
-  event.target.classList.add("active");
+  document.querySelectorAll('.sidebar ul li').forEach(li => li.classList.remove('active'))
+  event.target.classList.add('active')
 
-  switch(page) {
-    case "dashboard":
-      title.innerText = "Dashboard";
+  switch (page) {
+    case 'dashboard':
+      title.innerText = 'Dashboard'
       content.innerHTML = `
         <div class="card">
           <h3>Welcome</h3>
           <p>Sistem Pass Kendaraan & Izin Keluar</p>
         </div>
-      `;
-      break;
+      `
+      break
 
-    case "izin":
-      title.innerText = "Izin Keluar";
+    case 'izin':
+      title.innerText = 'Izin Keluar'
       content.innerHTML = `
         <div class="card">
           <h3>Form Izin Keluar</h3>
@@ -31,11 +31,11 @@ function loadPage(page) {
             <button type="submit">Ajukan</button>
           </form>
         </div>
-      `;
-      break;
+      `
+      break
 
-    case "kendaraan":
-      title.innerText = "Pass Kendaraan";
+    case 'kendaraan':
+      title.innerText = 'Pass Kendaraan'
       content.innerHTML = `
         <div class="card">
           <h3>Form Pass Kendaraan</h3>
@@ -49,11 +49,11 @@ function loadPage(page) {
             <button type="submit">Ajukan</button>
           </form>
         </div>
-      `;
-      break;
+      `
+      break
 
-    case "laporan":
-      title.innerText = "Laporan";
+    case 'laporan':
+      title.innerText = 'Laporan'
       content.innerHTML = `
         <div class="card">
           <h3>Data Pengajuan</h3>
@@ -71,35 +71,35 @@ function loadPage(page) {
             </tbody>
           </table>
         </div>
-      `;
-      break;
+      `
+      break
 
-    case "setting":
-      title.innerText = "Setting";
+    case 'setting':
+      title.innerText = 'Setting'
       content.innerHTML = `
         <div class="card">
           <h3>Pengaturan</h3>
           <p>Atur role, user, dan konfigurasi aplikasi.</p>
         </div>
-      `;
-      break;
+      `
+      break
   }
 }
 
-function submitIzin(e) {
-  e.preventDefault();
-  alert("Izin berhasil diajukan!");
+function submitIzin (e) {
+  e.preventDefault()
+  alert('Izin berhasil diajukan!')
 }
 
-function submitKendaraan(e) {
-  e.preventDefault();
-  alert("Pass kendaraan berhasil diajukan!");
+function submitKendaraan (e) {
+  e.preventDefault()
+  alert('Pass kendaraan berhasil diajukan!')
 }
 
-function logout() {
-  alert("Logout berhasil!");
-  window.location.reload();
+function logout () {
+  alert('Logout berhasil!')
+  window.location.reload()
 }
 
 // default load dashboard
-window.onload = () => loadPage("dashboard");
+window.onload = () => loadPage('dashboard')

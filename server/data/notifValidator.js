@@ -1,3 +1,3 @@
-const notifValidator = [];
+const notifValidator = []
 
 module.exports = notifValidator

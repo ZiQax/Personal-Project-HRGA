@@ -3,333 +3,549 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Service Request</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <title>Log Service</title>
+
     <link rel="stylesheet" href="../css/Book.css">
+
+    <style>
+        /* Styling khusus untuk Filter & Action Bar di dalam Card */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+
+        .date-group {
+            display: flex;
+            align-items: center;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .date-group input {
+            border: none;
+            background: transparent;
+            color: #374151;
+            padding: 5px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-action {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            color: white;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            background: #3b82f6;
+        }
+
+        .btn-search:hover {
+            background: #2563eb;
+        }
+
+        .btn-add {
+            background: #10b981;
+        }
+
+        .btn-add:hover {
+            background: #059669;
+        }
+
+        .btn-save {
+            background: #6366f1;
+        }
+
+        .btn-save:hover {
+            background: #4f46e5;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Pagination Styling Adjustment */
+        .pgnt {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .wrp-pgn {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .lnk button {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 5px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .lnk button:hover {
+            background: #f3f4f6;
+        }
+
+        /* --- PERBAIKAN TABEL PRESISI --- */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            /* KUNCI: Supaya lebar kolom terkunci & rapi */
+        }
+
+        .table thead th {
+            background-color: #f3f4f6;
+            color: #374151;
+            font-weight: 600;
+            padding: 12px 8px;
+            font-size: 14px;
+            text-align: left;
+            /* Rata kiri default */
+            border-bottom: 2px solid #e5e7eb;
+            white-space: nowrap;
+            /* Header tidak boleh turun baris */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .table tbody td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #f3f4f6;
+            vertical-align: middle;
+            font-size: 13px;
+            color: #4b5563;
+            /* Biar teks panjang di body tidak merusak layout */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Hover effect biar cantik */
+        .table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        /* --- PENGATURAN LEBAR PER KOLOM (Total 100%) --- */
+
+        /* 1. No (Kecil aja) */
+        .table th:nth-child(1) {
+            width: 5%;
+            text-align: center;
+        }
+
+        .table td:nth-child(1) {
+            text-align: center;
+        }
+
+        /* 2. Tanggal */
+        .table th:nth-child(2) {
+            width: 12%;
+        }
+
+        /* 3. NIK */
+        .table th:nth-child(3) {
+            width: 10%;
+        }
+
+        /* 4. Dept */
+        .table th:nth-child(4) {
+            width: 10%;
+        }
+
+        /* 5. Section */
+        .table th:nth-child(5) {
+            width: 10%;
+        }
+
+        /* 6. Position */
+        .table th:nth-child(6) {
+            width: 10%;
+        }
+
+        /* 7. Alasan (Paling lebar) */
+        .table th:nth-child(7) {
+            width: 20%;
+        }
+
+        /* Khusus kolom Alasan, teks boleh turun baris kalau kepanjangan */
+        .table td:nth-child(7) {
+            white-space: normal;
+            line-height: 1.4;
+        }
+
+        /* 8. Status */
+        .table th:nth-child(8) {
+            width: 10%;
+        }
+
+        /* 9. Checkbox (Tengah) */
+        .table th:nth-child(9) {
+            width: 5%;
+            text-align: center;
+        }
+
+        .table td:nth-child(9) {
+            text-align: center;
+        }
+
+        /* 10. Action (Tengah) */
+        .table th:nth-child(10) {
+            width: 8%;
+            text-align: center;
+        }
+
+        .table td:nth-child(10) {
+            text-align: center;
+        }
+
+        /* Tambahkan ini di style HTML kamu */
+        .status-approved {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .status-pending {
+            background: #ffedd5;
+            color: #9a3412;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        /* Styling untuk tombol halaman aktif */
+        .act-pgn {
+            background-color: #3b82f6 !important;
+            color: white !important;
+            border-color: #3b82f6 !important;
+        }
+    </style>
 </head>
 
 <body>
+
     <section class="menu tutup">
         <div class="logo">
-            <img src="../aset/qlogo.svg">
+            <img src="../aset/qlogo.svg" alt="Logo">
             <h2>Qiza</h2>
         </div>
+
         <ul class="item">
-            <li><a href="index.html">
+            <li>
+                <a href="index.html">
                     <i class="fa-solid fa-pager"></i>
                     <span class="label">Dashboard</span>
-                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
+
             <li class="kendaraan">
                 <a href="#">
-                    <i class="fa-solid fa-car"></i>
-                    <span class="label">Kendaraan</span>
+                    <i class="fa-solid fa-code-pull-request"></i>
+                    <span class="label">User Requests</span>
                     <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="Booking.html">
-                            <i class="fa-solid fa-book"></i>
-                            <span>Booking</span>
-                        </a>
-                    </li>
-                    <li><a href="#">
-                            <i class="fa-solid fa-database"></i>
-                            Data Peminjaman
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-gear"></i>
-                            Service
-                        </a>
+                    <li><a href="logRequestKendaraan.html"><i class="fa-solid fa-car"></i><span>Request
+                                Kendaraan</span></a></li>
+                    <li><a href="Booking.html"><i class="fa-solid fa-person-walking-arrow-right"></i><span>Request Izin
+                                Keluar</span></a></li>
+                    <li><a href="adminValidator.html"><i class="fa-solid fa-tty"></i><span>Service Request</span></a>
                     </li>
                 </ul>
-                <span class="tooltip">Kendaraan</span>
+                <span class="tooltip">Request</span>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span class="label">Analisa</span>
-                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <span class="tooltip">Analisa</span>
-            </li>
-            <li>
-                <a href="DataUsers.html">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="label">User</span>
-                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <!-- <ul class="sub-menu">
-          <li><a href="#">Daily</a></li>
-          <li><a href="#">Weekly</a></li>
-          <li><a href="#">Monthly</a></li>
-        </ul> -->
-                <span class="tooltip">User</span>
-            </li>
-            <li>
-                <a href="#"><i class="fa-solid fa-key"></i>
-                    <span class="label">Login</span>
-                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <span class="tooltip">Login</span>
-            </li>
-            <li>
-                <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>
-                    <span class="label">History</span>
-                    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <span class="tooltip">History</span>
-            </li>
+            <li><a href="#"><i class="fa-solid fa-chart-pie"></i><span class="label">Analisa</span></a><span
+                    class="tooltip">Analisa</span></li>
+            <li><a href="DataUsers.html"><i class="fa-solid fa-users"></i><span class="label">User</span></a><span
+                    class="tooltip">User</span></li>
+            <li><a href="#"><i class="fa-solid fa-key"></i><span class="label">Login</span></a><span
+                    class="tooltip">Login</span></li>
+            <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span class="label">History</span></a><span
+                    class="tooltip">History</span></li>
         </ul>
     </section>
 
     <section id="intfc">
-        <div class="navigation">
+
+        <nav class="navigation">
             <div class="n1">
-                <div>
-                    <i id="menbtn" class="fa-solid fa-bars"></i>
-                </div>
+                <div id="menbtn"><i class="fa-solid fa-bars"></i></div>
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="search" id="search">
+                    <input type="text" placeholder="Search data..." id="search">
                     <button type="button" id="search-button"></button>
                 </div>
-                <button type="button" id="btnsrc">Search</button>
             </div>
 
             <div class="profile">
-                <i class="fa-solid fa-bell"></i>
-                <img id="iamge" src="../aset/image.jpg">
+                <div style="position: relative;">
+                    <i class="fa-solid fa-bell" id="notif-icon"></i>
+                    <div class="notification-badge" id="notification-count">0</div>
+                </div>
+                <img id="iamge" src="../aset/image.jpg" alt="Profile">
+            </div>
+        </nav>
+
+        <div class="ui">
+            <div class="user-info">
+                <h4 id="nam-u">Nama User</h4>
+                <p id="email-u">user@example.com</p>
+            </div>
+            <div class="actions">
+                <a href="profile.html" class="btn">Profile Setting</a>
+                <button id="logoutBtn" class="btn logout">Logout</button>
             </div>
         </div>
 
-        <div id="intfc">
-            <div class="ui">
-                <div class="user-info">
-                    <h4 id="nam-u">Nama User</h4>
-                    <p id="email-u">user@example.com</p>
-                </div>
+        <div class="main">
 
-                <div class="actions">
-                    <a href="profile.html" class="btn">Profile Setting</a>
-                    <button id="logoutBtn" class="btn logout">Logout</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="cont-main">
-            <div class="value-title">
+            <div class="header-title">
                 <h3>Log Request Izin</h3>
+                <p>Monitor status persetujuan izin karyawan.</p>
+            </div>
+
+            <div class="kpi-container" style="grid-template-columns: repeat(3, 1fr);">
+
+                <div class="kpi-card pending-card">
+                    <div class="kpi-content">
+                        <div class="icon-bg orange"><i class="fa-solid fa-hourglass-end"></i></div>
+                        <div class="kpi-info">
+                            <span>Pending</span>
+                            <h4 id="pending-count">0</h4>
+                        </div>
+                    </div>
+                    <button id="pending-button" class="btn-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="kpi-card approved-card">
+                    <div class="kpi-content">
+                        <div class="icon-bg green"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="kpi-info">
+                            <span>Approved</span>
+                            <h4 id="approved-count">4</h4>
+                        </div>
+                    </div>
+                    <button id="approved-button" class="btn-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="kpi-card rejected-card">
+                    <div class="kpi-content">
+                        <div class="icon-bg red"><i class="fa-solid fa-circle-xmark"></i></div>
+                        <div class="kpi-info">
+                            <span>Rejected</span>
+                            <h4 id="rejected-count">6</h4>
+                        </div>
+                    </div>
+                    <button id="rejected-button" class="btn-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
             </div>
 
             <div class="value">
+                <div class="val-box full-width" style="grid-column: span 6;">
 
-                <div class="val-box">
-                    <div class="sub-val1">
-                        <i class="fa-solid fa-hourglass-end"></i>
-                        <h3>Pending</h3>
-
-                        <div class="sub-val2">
-                            <h3 id="pending-count">0</h3>
+                    <div class="filter-container">
+                        <div class="date-group">
+                            <i class="fa-solid fa-calendar-days" style="color:#6b7280; margin-right:5px;"></i>
+                            <input type="date" id="start-date" title="Start Date">
                         </div>
-                    </div>
-                    <div class="dtl">
-                        <button id="pending-button">Lihat Detail<i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <div class="val-box">
-                    <div class="sub-val1">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <h3>Approved</h3>
-
-                        <div class="sub-val2">
-                            <h3 id="approved-count">0</h3>
+                        <span style="color:#9ca3af;">to</span>
+                        <div class="date-group">
+                            <i class="fa-solid fa-calendar-days" style="color:#6b7280; margin-right:5px;"></i>
+                            <input type="date" id="end-date" title="End Date">
                         </div>
-                    </div>
-                    <div class="dtl">
-                        <button id="approved-button" type="button">Lihat Detail<i
-                                class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
 
-                <div class="val-box">
-                    <div class="sub-val1">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                        <h3>Rejected</h3>
+                        <button type="button" id="btn-car" class="btn-action btn-search">
+                            <i class="fa-solid fa-filter"></i> Search
+                        </button>
 
-                        <div class="sub-val2">
-                            <h3 id="rejected-count">0</h3>
-                        </div>
-                    </div>
-                    <div class="dtl">
-                        <button id="rejected-button">Lihat Detail<i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="action-bar">
-                <div class="cldr">
-                    <div class="icn-cldr">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <div class="calender">
-                            <input type="date" id="start-date">
+                        <div style="margin-left: auto; display: flex; gap: 10px;">
+                            <button type="button" class="btn-action btn-add tmbh cont-add"> <i
+                                    class="fa-solid fa-plus"></i> Add</button>
+                            <button type="button" class="btn-action btn-save sv"> <i
+                                    class="fa-solid fa-floppy-disk"></i> Save</button>
                         </div>
                     </div>
 
-                    <div class="icn-cldr">
-                        <i class="fa-solid fa-calendar-days"></i>
-
-                        <div class="calender">
-                            <input type="date" id="end-date">
-                        </div>
-                    </div>
-
-                    <div class="icn-btn">
-                        <div class="brt">
-                            <button type="button" id="btn-car">Search</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cont-papan">
-                    <div class="papan">
-                        <div class="butadd">
-                            <button type="button" class="tmbh"> + Add</button>
-                            <button type="button" class="sv">Save</button>
-                        </div>
-                        <table width="100%" class="table">
+                    <div class="table-responsive">
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th>Tanggal<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th class="name">NIK<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th>Departement<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th>Section<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th>position<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th>Alasan<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th>Status<span><i class="fa-solid fa-chevron-down"></i></span></th>
-                                    <th><input type="checkbox" value="checkbox" id="selectAll"></th>
-                                    <th><button type="button" id="delete">Delete all</button></th>
+                                    <th>No <i class="fa-solid fa-sort" style="font-size:10px; opacity:0.5;"></i></th>
+                                    <th>Tanggal</th>
+                                    <th>NIK</th>
+                                    <th>Departement</th>
+                                    <th>Section</th>
+                                    <th>Position</th>
+                                    <th>Alasan</th>
+                                    <th>Status</th>
+                                    <th style="text-align:center;"><input type="checkbox" id="selectAll"></th>
+                                    <th style="text-align:center;"><button type="button" id="delete"
+                                            class="btn-delete">Del All</button></th>
                                 </tr>
                             </thead>
                             <tbody id="body">
-
                             </tbody>
                         </table>
+                    </div>
 
-                        <div class="pgnt">
-                            <div class="dropup">
-                                <!-- <button id="updown" class="dropbtn">▲</button> -->
-                                <div id="dropUpMenu" class="dropUpContent">
-                                    <a href="#" class="page-srt" data-limit="10">10</a>
-                                    <a href="#" class="page-srt" data-limit="20">20</a>
-                                    <a href="#" class="page-srt" data-limit="30">30</a>
-                                    <a href="#" class="page-srt" data-limit="40">40</a>
-                                    <a href="#" class="page-srt" data-limit="50">50</a>
-                                </div>
-                            </div>
+                    <div class="pgnt">
+                        <div class="limit-selector">
+                            <label style="font-size:13px; color:#6b7280;">Rows per page:</label>
+                            <select id="limitSelect" style="padding:5px; border-radius:5px; border:1px solid #e5e7eb;">
+                                <option value="10" selected>10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
 
-                            <div class="wrp-pgn">
-                                
-
-                                <div class="lnk" id="lnk">
-
-                                    <button id="prevBtn">Prev</button>
-                                    <span id="pageInfo"></span>
-                                    <button id="nextBtn">Next</button>
-
-                                    <!-- <a href="#" class="page-link">1</a>
-                                    <a href="#" class="page-link">2</a>
-                                    <a href="#" class="page-link">3</a>
-                                    <a href="#" class="page-link">4</a>
-                                    <a href="#" class="page-link">5</a> -->
-                                </div>
-                                <!-- <button class="arr-pgn" id="next">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                                <button class="dbl-arr" id="last">&raquo;</button> -->
+                        <div class="wrp-pgn">
+                            <div class="lnk" id="lnk">
+                                <button id="prevBtn">Prev</button>
+                                <span id="pageInfo" style="font-size:14px; font-weight:500; color:#374151;">Page
+                                    1</span>
+                                <button id="nextBtn">Next</button>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Modal Edit -->
     <div id="modalEdit"
-        style="display:none; position:fixed; top:30%; left:35%; width:300px; background:#fff; padding:20px; border-radius:8px; border:1px solid #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index:1000;">
-        <label for="editValue">Edit Data:</label><br>
+        style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:350px; background:#fff; padding:25px; border-radius:12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index:2000; border:1px solid #e5e7eb;">
+        <h4 style="margin-bottom:15px; color:#1f2937;">Edit Data Request</h4>
 
-        <input type="text" id="editName" style="width:100%; margin:10px 0;">
-        <!-- <input type="time" id="editTitle" style="width:100%; margin:10px 0;"> -->
-        <input type="text" id="editReason" style="width:100%; margin:10px 0;">
-        <select id="editStatus" style="width:100%; margin:10px 0;">
-            <option value="" disabled selected hidden>Pilih Status</option>
-            <option value="Menunggu persetujuan">Pending</option>
-            <option value="Disetujui">Approved</option>
-            <option value="Ditolak">Rejected</option>
-        </select>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <input type="text" id="editName" placeholder="Nama / NIK"
+                style="padding:10px; border:1px solid #d1d5db; border-radius:6px; outline:none;">
+            <input type="text" id="editReason" placeholder="Alasan"
+                style="padding:10px; border:1px solid #d1d5db; border-radius:6px; outline:none;">
+            <select id="editStatus"
+                style="padding:10px; border:1px solid #d1d5db; border-radius:6px; outline:none; background:#fff;">
+                <option value="" disabled selected hidden>Pilih Status</option>
+                <option value="Menunggu Persetujuan">Pending</option>
+                <option value="Disetujui">Approved</option>
+                <option value="Ditolak">Rejected</option>
+            </select>
+        </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px;">
-            <button id="saveEdit">Simpan</button>
-            <button id="closeModal">Tutup</button>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top:20px;">
+            <button id="closeModal"
+                style="padding:8px 15px; background:#f3f4f6; border:none; border-radius:6px; cursor:pointer;">Batal</button>
+            <button id="saveEdit"
+                style="padding:8px 15px; background:#3b82f6; color:white; border:none; border-radius:6px; cursor:pointer;">Simpan</button>
         </div>
     </div>
 
-    <div id="modalEditSuccess" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
-     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
-        <strong>
-            <p>✅</p>
-            <p>Data berhasil dihapus!</p>
-        </strong>
-
+    <div id="modalEditSuccess"
+        style="display:none; position:fixed; top:20px; right:20px; background:#ecfdf5; color:#065f46; padding:15px 20px; border-left:4px solid #10b981; border-radius:6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index:2000; animation: fadeIn 0.3s;">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-circle-check"></i>
+            <strong>Data berhasil diupdate!</strong>
+        </div>
     </div>
 
-    <div id="modalDeleteSuccess" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
-     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
-        <strong>
-            <p>✅</p>
-            <p>Data berhasil dihapus!</p>
-        </strong>
-
+    <div id="modalDeleteSuccess"
+        style="display:none; position:fixed; top:20px; right:20px; background:#fef2f2; color:#991b1b; padding:15px 20px; border-left:4px solid #ef4444; border-radius:6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index:2000; animation: fadeIn 0.3s;">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-trash-can"></i>
+            <strong>Data berhasil dihapus!</strong>
+        </div>
     </div>
 
-    <div id="modalSave" style="display:none; position:fixed; top:35%; left:40%; background:#dff0d8; color:#3c763d; 
-     padding:20px; border:1px solid #3c763d; border-radius:8px; z-index:1000;">
-        <strong>
-            <p>✅</p>
-            <p>Data Berhasil di ganti</p>
-        </strong>
+    <div id="modalSave"
+        style="display:none; position:fixed; top:20px; right:20px; background:#eff6ff; color:#1e40af; padding:15px 20px; border-left:4px solid #3b82f6; border-radius:6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index:2000; animation: fadeIn 0.3s;">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <strong>Data berhasil disimpan!</strong>
+        </div>
     </div>
 
-    <!---Modal display data by status-->
-
-    <div id="modalSts" class="modal hidden">
-        <div class="modal-content">
-            <h3 id="modal-message"></h3>
+    <div id="modalSts" class="modal hidden"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1500; align-items:center; justify-content:center;">
+        <div class="modal-content"
+            style="background:#fff; padding:25px; border-radius:12px; width:80%; max-height:80vh; overflow-y:auto;">
+            <h3 id="modal-message" style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">Detail
+                Status</h3>
             <div id="modal-table"></div>
-            <button id="close-modal">Tutup</button>
+            <button id="close-modal"
+                style="margin-top:15px; padding:8px 20px; background:#f3f4f6; border:none; border-radius:6px; cursor:pointer;">Tutup</button>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
-        $('#menu-button').click(function () {
-            $('#menu').toggleClass("active");
-        })
+        $('#menbtn').click(function () {
+            $('.menu').toggleClass("tutup");
+            if ($('.menu').hasClass('tutup')) {
+                $('.menu').css('width', '70px');
+            } else {
+                $('.menu').css('width', '250px');
+            }
+        });
+
+        // Toggle Profile Dropdown
+        $('.profile img').click(function () {
+            $('.ui').toggleClass('active');
+        });
     </script>
 
     <script src="../logic/Book.js"></script>
+
 </body>
 
 </html>

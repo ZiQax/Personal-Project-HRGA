@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const contUpdateKarywan = require('../controlers/updateKaryawan');
+const express = require('express')
+const router = express.Router()
+const contUpdateKarywan = require('../controlers/updateKaryawan')
 
-router.post('/', contUpdateKarywan.updateKaryawan);
+router.post('/', contUpdateKarywan.updateKaryawan)
 
-module.exports = router;
+module.exports = router

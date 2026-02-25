@@ -1,57 +1,57 @@
-var buttons = document.querySelectorAll("[data-target='tooltip_trigger']");
+const buttons = document.querySelectorAll("[data-target='tooltip_trigger']")
 
 buttons.forEach((button) => {
-  var tooltip = button.nextElementSibling;
-  var placement = button.getAttribute("data-placement");
+  const tooltip = button.nextElementSibling
+  const placement = button.getAttribute('data-placement')
 
   const popperInstance = Popper.createPopper(button, tooltip, {
     modifiers: [
       {
-        name: "offset",
+        name: 'offset',
         options: {
-          offset: [0, 8],
-        },
-      },
+          offset: [0, 8]
+        }
+      }
     ],
-    placement: placement,
-  });
+    placement
+  })
 
-  function show() {
+  function show () {
     // Make the tooltip visible
-    tooltip.classList.remove("hidden");
-    tooltip.classList.add("block");
+    tooltip.classList.remove('hidden')
+    tooltip.classList.add('block')
 
     // Enable the event listeners
     popperInstance.setOptions((options) => ({
       ...options,
-      modifiers: [...options.modifiers, { name: "eventListeners", enabled: true }],
-    }));
+      modifiers: [...options.modifiers, { name: 'eventListeners', enabled: true }]
+    }))
 
     // Update its position
-    popperInstance.update();
+    popperInstance.update()
   }
 
-  function hide() {
+  function hide () {
     // Hide the tooltip
 
-    tooltip.classList.remove("block");
-    tooltip.classList.add("hidden");
+    tooltip.classList.remove('block')
+    tooltip.classList.add('hidden')
 
     // Disable the event listeners
     popperInstance.setOptions((options) => ({
       ...options,
-      modifiers: [...options.modifiers, { name: "eventListeners", enabled: false }],
-    }));
+      modifiers: [...options.modifiers, { name: 'eventListeners', enabled: false }]
+    }))
   }
 
-  const showEvents = ["mouseenter", "focus"];
-  const hideEvents = ["mouseleave", "blur"];
+  const showEvents = ['mouseenter', 'focus']
+  const hideEvents = ['mouseleave', 'blur']
 
   showEvents.forEach((event) => {
-    button.addEventListener(event, show);
-  });
+    button.addEventListener(event, show)
+  })
 
   hideEvents.forEach((event) => {
-    button.addEventListener(event, hide);
-  });
-});
+    button.addEventListener(event, hide)
+  })
+})

@@ -1,7 +1,6 @@
+{ /* array */ }
 
-{/*array*/}
-
-/*function Foo () {
+/* function Foo () {
     this.bar = 10;
 }
 
@@ -25,10 +24,8 @@ console.log((f()).toString());
 
 function sum(a, b) {
     return a + b;
-}    
+}
 console.log(sum(1, 2));
-
-
 
 const temp = 15;
 
@@ -53,7 +50,6 @@ switch (temp) {
 }
 
 window.onload = function () {
-    
 
 /*const dt = new Date();
 const bulan = dt.getMonth();
@@ -74,7 +70,6 @@ switch (bulan) {
        msg = "yang lain";
 };
 
-
 const el = document.getElementById("result");
 el.innerHTML = msg;
 
@@ -91,14 +86,12 @@ for (let prop in house) {
 
 };
 
-
 const imah = ['yopi', 'angga', 'budi'];
 
 for (let house of imah) {
     console.log(imah[0]);
     document.getElementById('result').innerHTML= [`${imah[0]} <br> ${imah[1]} <br> ${imah[2]}s`];
 }
-
 
 let nomerKosong = 0;
 let nomer= 70;
@@ -107,19 +100,18 @@ let kosong;
 do{
     kosong = Math.floor(Math.random() * 100);
     nomerKosong++;
-}while (kosong != nomer) 
+}while (kosong != nomer)
 
 document.getElementById('result').innerHTML= `<h2>tebak nomer berapa</h2>
 
 <p>nomer kosong ${nomerKosong}</p>`;
-
 
 let noTelp = "0889-7362-9332"
 
 for (let digit of noTelp) {
    if (digit == "-") {
        continue;N
-   } 
+   }
    console.log(digit);
 }
 */
@@ -130,7 +122,7 @@ for (let digit of noTelp) {
 //     return value > 0
 // })
 // console.log(imah.some(function (value) {
-    
+
 // }))
 
 // let total = 0;
@@ -144,32 +136,29 @@ for (let digit of noTelp) {
 
 // document.getElementById('result').innerHTML= hasil;
 
-
-
 // let ingridients = ['susu', 'telur', 'minyak', 'gula'];
 // ingridients.splice('susu', 'telur', 'minyak', 'gula', 'keju', 'mentega');
 
 // document.getElementById('result').innerHTML= ingridients;
 
-
 // console.log(ingridients);
 
 // {/*fungsi fungsi array*/}
 
-{/*array method*/}
+{ /* array method */ }
 
-{/*push() => menambahkan elemen di akhir array*/}
-{/*pop() => menghapus elemen di akhir array*/}
-{/*shift() => menghapus elemen di awal array*/}
-{/*unshift() => menambahkan elemen di awal array*/}
-{/*slice() => memotong array*/}
-{/*splice() => memotong array*/}
+{ /* push() => menambahkan elemen di akhir array */ }
+{ /* pop() => menghapus elemen di akhir array */ }
+{ /* shift() => menghapus elemen di awal array */ }
+{ /* unshift() => menambahkan elemen di awal array */ }
+{ /* slice() => memotong array */ }
+{ /* splice() => memotong array */ }
 /* let imah = ['yopi', 'angga', 'budi'];
    imah.splice(1, 1); -> ['yopi', 'budi']
-   imah.splice(1, 0, ridwan) ->['yopi', 'ridwan', 'budi'] tambah ridwan ke index 1  
+   imah.splice(1, 0, ridwan) ->['yopi', 'ridwan', 'budi'] tambah ridwan ke index 1
    console.log(imah);
-   hasinya adalah -> hapus index 1 sebanyak 1*/
- 
+   hasinya adalah -> hapus index 1 sebanyak 1 */
+
 //    function hitung(value, hitungan) {
 //     let hasil = hitungan(value);
 //     return hasil
@@ -178,7 +167,6 @@ for (let digit of noTelp) {
 //  console.log(hitung(4, function (value) {
 //     return 2*Math.PI*value
 //  }));
-
 
 //  let harga = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
 //  let total = 0;
@@ -192,14 +180,13 @@ for (let digit of noTelp) {
 //  console.log(total);
 
 //  let harga = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
- 
+
 //  let listItems = harga.map(
 //     (nilai) => `<li>${nilai}</li>`
 //  )
 
 //  let list = document.getElementById('result');
 //  list.innerHTML = listItems.join('');
-
 
 // const body = document.body;
 
@@ -212,7 +199,7 @@ for (let digit of noTelp) {
 
 // const hitung = document.getElementById('hitung')
 // function kelik() {
-//    hitung.style.background = "red" 
+//    hitung.style.background = "red"
 //    hitung.style.border = "none"
 //    hitung.style.padding = "10px"
 //    hitung.style.borderRadius = "5px"
@@ -229,7 +216,6 @@ for (let digit of noTelp) {
 //   z.appendChild(t);
 //   document.getElementById("myTr").appendChild(z);
 // }
-
 
 // const deret = ['🤞', '🙌', '💕', '😘', '🌹']
 
@@ -258,7 +244,7 @@ for (let digit of noTelp) {
 // const arrNew = ['💋', '🕹', '🤣', '🤦‍♂️', '🐱‍🐉']
 // // const arrCop = [...arrNew]; //cara menyalin array
 // // const arrCop = arrNew.slice();//cara menyalin array
-// const arrCop = JSON.parse(JSON.stringify(arrNew));//cara menyalin array    
+// const arrCop = JSON.parse(JSON.stringify(arrNew));//cara menyalin array
 // // const arrCop = Array.from(arrNew);
 // arrCop[0] = '👀';
 
@@ -271,7 +257,6 @@ for (let digit of noTelp) {
 // console.log(multi[3][1]);
 // // console.log(multi[4].fungsi()); //cara mengelsekusi function dalam array
 // multi[4].fungsi();
-
 
 // const buahAku = ['🍌', '🍓', '🍒'];
 // const buahKamu = ['🍇', '🍏', '🍐', '🍊'];
@@ -286,31 +271,31 @@ for (let digit of noTelp) {
 //     console.log(index, value);
 // })
 
-let daKar = [
-{ 
-    nama : 'angga',
-    umur : 23,
-    pekerjaan : 'student',
-    alamat : 'ciamis'
-},
-{
-    nama : 'yopi',
-    umur : 28,
-    pekerjaan : 'developer',
-    alamat : 'jakarta'
-},
-{
-    nama : 'budi',
-    umur : 30,
-    pekerjaan : 'engineer',
-    alamat : 'jogjakarta'
-},
-{
-    nama : 'sonny',
-    umur : 35,
-    pekerjaan : 'arsitek',
-    alamat : 'jombang'
-}
+const daKar = [
+  {
+    nama: 'angga',
+    umur: 23,
+    pekerjaan: 'student',
+    alamat: 'ciamis'
+  },
+  {
+    nama: 'yopi',
+    umur: 28,
+    pekerjaan: 'developer',
+    alamat: 'jakarta'
+  },
+  {
+    nama: 'budi',
+    umur: 30,
+    pekerjaan: 'engineer',
+    alamat: 'jogjakarta'
+  },
+  {
+    nama: 'sonny',
+    umur: 35,
+    pekerjaan: 'arsitek',
+    alamat: 'jombang'
+  }
 ]
 
 // const cari = daKar.filter(item => item.nama === 'angga');
@@ -337,12 +322,12 @@ let daKar = [
 //     usia.push(new Date().getFullYear() - tahunLahir[a]); //tradisonal for loop
 // }
 
-// console.log(usia); 
+// console.log(usia);
 
 // const tahunLahir = [1998, 1999, 2000, 2001, 2002];
 // const usia = tahunLahir.map(tahun => new Date().getFullYear() - tahun); //map array looping dengan cara lebih singkat
 
-// console.log(usia); 
+// console.log(usia);
 
 // const approve = []
 
@@ -359,11 +344,11 @@ let daKar = [
 // console.log(daKar.map(data => data.nama ))
 
 function cekGanjilGenap (angka) {
-    if (angka % 2 === 0) {
-        return 'genap';
-    } else {
-        return 'ganjil';
-    }
+  if (angka % 2 === 0) {
+    return 'genap'
+  } else {
+    return 'ganjil'
+  }
 }
 
 // console.log(cekGanjilGenap(10));
@@ -372,11 +357,11 @@ function cekGanjilGenap (angka) {
 //     return kalimat .split("").reverse().join("");
 // }
 
-function balikKata(kalimat) {
-    let balik = '';
-    for(let a = kalimat.length - 1; a >= 0; a--) {
-        balik += kalimat[a];
-    }
-    return balik;
+function balikKata (kalimat) {
+  let balik = ''
+  for (let a = kalimat.length - 1; a >= 0; a--) {
+    balik += kalimat[a]
+  }
+  return balik
 }
-console.log(balikKata('angga'));
+console.log(balikKata('angga'))
