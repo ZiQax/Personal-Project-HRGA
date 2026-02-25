@@ -1,30 +1,9 @@
 const notificationController = require('./notificationControl')
 const peminjamanKendaraanModel = require('../models/modelPeminjamanKendaraan')
-
-const handleRequest = async (res, action, succesStatus = 200) => {
-  try {
-    const data = await action()
-
-    if (!data || (Array.isArray(data) && data.length === 0)) {
-      return res.status(404).json({ message: 'Data Not Found' })
-    }
-
-    return res.status(succesStatus).json({
-      success: true,
-      message: 'Success',
-      data
-    })
-  } catch (err) {
-    return res.status(500).json({
-      success: false,
-      message: 'Database Error',
-      error: err
-    })
-  }
-}
+const { handleRequest } = require('../services/apiUtils')
 
 const getPeminjamanKendaraan = async (req, res) => {
-  handleRequest(res, () => peminjamanKendaraanModel.getAllPeminjamankendaraan())
+  await handleRequest(res, () => peminjamanKendaraanModel.getAllPeminjamankendaraan())
 }
 
 const getPaginationKendaraan = async (req, res) => {
@@ -32,20 +11,20 @@ const getPaginationKendaraan = async (req, res) => {
 }
 
 const getLogByMonth = async (req, res) => {
-  const month = req.params.month ? String(req.params.month).replace(/[^a-zA-Z0-9-]/g, '') : ''
-  handleRequest(res, () => peminjamanKendaraanModel.getLogByMonth(month))
+  const month = req.params.month ? String(req.params.month).replaceAll(/[^a-zA-Z0-9-]/g, '') : ''
+  await handleRequest(res, () => peminjamanKendaraanModel.getLogByMonth(month))
 }
 
 const getApproveReq = async (req, res) => {
-  handleRequest(res, () => peminjamanKendaraanModel.getApproveReq())
+  await handleRequest(res, () => peminjamanKendaraanModel.getApproveReq())
 }
 
 const getPendReq = async (req, res) => {
-  handleRequest(res, () => peminjamanKendaraanModel.getPendingReq())
+  await handleRequest(res, () => peminjamanKendaraanModel.getPendingReq())
 }
 
 const getRejectReq = async (req, res) => {
-  handleRequest(res, () => peminjamanKendaraanModel.getRejectedReq())
+  await handleRequest(res, () => peminjamanKendaraanModel.getRejectedReq())
 }
 
 const addPeminjamanKendaraan = async (req, res) => {
@@ -62,7 +41,7 @@ const addPeminjamanKendaraan = async (req, res) => {
     return res.status(400).json({ message: 'Bad Request' })
   };
 
-  handleRequest(res, () => peminjamanKendaraanModel.addPeminjamanKendaraan(employee_id, kendaraan_id, tujuanList), 201)
+  await handleRequest(res, () => peminjamanKendaraanModel.addPeminjamanKendaraan(employee_id, kendaraan_id, tujuanList), 201)
 }
 
 const updatePeminjamanKendaraan = async (req, res) => {
@@ -70,18 +49,16 @@ const updatePeminjamanKendaraan = async (req, res) => {
   const { status } = req.body
 
   if (!id || !status) {
-    return res.status(400).json({ message: 'Data tidak bisa diupdate, silahkan coba lagi dengan menginputkan data yang valid' })
+    return res.status(400).json({ success: false, message: 'Status dan ID tidak boleh kosong' })
   }
 
-  if (!id, !status) return res.status(400).json({ success: false, message: 'Status dan ID tidak boleh kosong' })
-
-  handleRequest(res, () => peminjamanKendaraanModel.updatePeminjam(id, status), 201)
+  await handleRequest(res, () => peminjamanKendaraanModel.updatePeminjam(status, id), 201)
 }
 
 const deletePeminjamanKendaraan = async (req, res) => {
   if (!req.params.id) return res.status(400).json({ message: 'Bad Request' })
 
-  handleRequest(res, () => peminjamanKendaraanModel.deletePeminjam(req.params.id), 201)
+  await handleRequest(res, () => peminjamanKendaraanModel.deletePeminjam(req.params.id), 201)
 }
 
 module.exports = {

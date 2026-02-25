@@ -1,9 +1,28 @@
-const { get } = require('mongoose')
 const db = require('../config/db')
 
 const getAllPeminjamankendaraan = () => {
   return new Promise((resolve, reject) => {
-    const sql = 'SELECT pk.id, e,nama AS nama_peminjam , pk.nama AS departments, pk.nama AS sections, dk.plat_no, dk.merk, COALESCE(GROUP_CONCAT(pk.tujuan SEPARATOR ","), "-") AS tujuan, pk.status, pk.created_at FROM peminjaman_kendaraan pk JOIN employee  ON pk.employee_id = e.id JOIN employee  ON e.ection = s.id JOIN departments d ON s.departments_id = d.id JOIN data_kendaraan dk ON pk.kendaraan_id = dk.id LEFT JOIN peminjaman_tujuan pt ON pk.id = pt.peminjaman_id GROUP BY pk.id, e.nama, d.name, s.name, sk.plat_no, dk.merk, pk.status, pk.created_at ORDER BY pk.created at DESC LIMIT 5'
+    const sql = `
+      SELECT 
+        pk.id, 
+        e.nama AS nama_peminjam, 
+        d.name AS departments, 
+        s.name AS sections, 
+        dk.plat_no, 
+        dk.merk, 
+        COALESCE(GROUP_CONCAT(pt.tujuan SEPARATOR ", "), "-") AS tujuan, 
+        pk.status, 
+        pk.created_at 
+      FROM peminjaman_kendaraan pk 
+      JOIN employee e ON pk.employee_id = e.id 
+      JOIN sections s ON e.section = s.id 
+      JOIN departments d ON s.departments_id = d.id 
+      JOIN data_kendaraan dk ON pk.kendaraan_id = dk.id 
+      LEFT JOIN peminjaman_tujuan pt ON pk.id = pt.peminjaman_id 
+      GROUP BY pk.id, e.nama, d.name, s.name, dk.plat_no, dk.merk, pk.status, pk.created_at 
+      ORDER BY pk.created_at DESC 
+      LIMIT 5
+    `
     db.query(sql, (err, result) => {
       if (err) return reject(err)
       resolve(result)
@@ -12,7 +31,6 @@ const getAllPeminjamankendaraan = () => {
 }
 
 const getPaginatedPeminjamanKendaraan = (page, limit) => {
-  console.log(page, limit)
   return new Promise((resolve, reject) => {
     const offset = (page - 1) * limit
     const sql = 'SELECT pk.id, e.nama AS nama_peminjam, d.name AS departments, s.name AS section, dk.plat_no, pk.status, pk.created_at FROM peminjaman_kendaraan pk JOIN employee e ON pk.employee_id = e.id JOIN departments d ON e.departement = d.id JOIN sections s ON e.section = s.id JOIN data_kendaraan dk ON pk.kendaraan_id = dk.id ORDER BY pk.created_at DESC LIMIT ? OFFSET ?'
@@ -99,7 +117,7 @@ const getRejectedReq = () => {
 
 const addPeminjamanKendaraan = (employee_id, kendaraan_id, tujuanList = []) => {
   return new Promise((resolve, reject) => {
-    const sql = 'INSERT INTO peminjaman_kendaraan (employee_id, kendaraan_id) VALUES (?, ?, ?, ?)'
+    const sql = 'INSERT INTO peminjaman_kendaraan (employee_id, kendaraan_id) VALUES (?, ?)'
     db.query(sql, [employee_id, kendaraan_id], (err, result) => {
       if (err) return reject(err)
 

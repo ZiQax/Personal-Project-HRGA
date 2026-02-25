@@ -10,13 +10,15 @@ const db = mysql.createPool({
   queueLimit: 0
 })
 
-db.getConnection((err, connect) => {
-  if (err) {
-    throw err
-  } else {
-    console.log('Database Connected' + connect.threadId)
-    connect.release()
-  }
-})
+if (process.env.NODE_ENV !== 'test') {
+  db.getConnection((err, connect) => {
+    if (err) {
+      throw err
+    } else {
+      console.log('Database Connected' + connect.threadId)
+      connect.release()
+    }
+  })
+}
 
 module.exports = db

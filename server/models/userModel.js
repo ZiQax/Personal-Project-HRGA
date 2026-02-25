@@ -1,4 +1,3 @@
-const { get } = require('mongoose')
 const db = require('../config/db')
 const bcrypt = require('bcrypt')
 
@@ -111,12 +110,10 @@ const findByusernameOrNik = async (identifier) => {
 }
 
 const resetPassword = async (id, newPassword) => {
+  const hash = await bcrypt.hash(newPassword, 10)
   return new Promise((resolve, reject) => {
-    bcrypt.hash(newPassword, 10, (err, hash) => {
-      if (err) return reject(err)
-    })
     const sql = 'UPDATE users SET password = ? WHERE id = ?'
-    db.query(sql, [newPassword, id], (err, result) => {
+    db.query(sql, [hash, id], (err, result) => {
       if (err) return reject(err)
       resolve(result)
     })

@@ -1,5 +1,3 @@
-const { time } = require('console')
-const { type } = require('node:os')
 const { backgroundColor } = require('./peminjamanKendaraan')
 const peminjamanData = {
   type: 'line',

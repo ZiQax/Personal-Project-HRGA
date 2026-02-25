@@ -11,10 +11,9 @@ const getLogData = () => {
 }
 
 const getPaginatedPeminjamanKendaraan = (page, limit) => {
-  console.log(page, limit)
   return new Promise((resolve, reject) => {
     const offset = (page - 1) * limit
-    const sql = 'SELECT *FROM data_kendaraan ORDER BY created_at DESC LIMIT ? OFFSET ?'
+    const sql = 'SELECT * FROM data_kendaraan ORDER BY created_at DESC LIMIT ? OFFSET ?'
     const countSql = 'SELECT COUNT(*) AS total FROM data_kendaraan'
 
     db.query(sql, [limit, offset], (err, result) => {
@@ -44,7 +43,7 @@ const insertData = (plat_no, merk, jenis) => {
     db.query(sql, [plat_no, merk, jenis], (err, result) => {
       if (err) return reject(err)
       resolve({
-        isertId: result.insertId,
+        insertId: result.insertId,
         affectedRows: result.affectedRows
       })
     })
@@ -61,4 +60,4 @@ const deleteData = (id) => {
   })
 }
 
-module.exports = { getLogData, insertData, deleteData }
+module.exports = { getLogData, insertData, deleteData, getPaginatedPeminjamanKendaraan }

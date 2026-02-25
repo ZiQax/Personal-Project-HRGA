@@ -1,4 +1,3 @@
-const { get } = require('mongoose')
 const db = require('../config/db')
 
 const getAllIzin = () => {
@@ -7,17 +6,19 @@ const getAllIzin = () => {
             SELECT
                p.id, 
                e.nama AS nama_karyawan,
-               p.postion AS jabatan,
-               p.departement AS departement,
-               p.sections_id AS sections_id,
+               e.postion AS jabatan,
+               d.name AS departement,
+               s.name AS section,
                p.alasan,
                p.tanggal,
                p.estimasi_keluar,
                p.status,
                p.created_at
-               FROM permohonan_izin p
-               JOIN employee e ON p.employee_id = e.id
-               ORDER BY p.created_at DESC
+            FROM permohonan_izin p
+            JOIN employee e ON p.employee_id = e.id
+            JOIN sections s ON e.section = s.id
+            JOIN departments d ON s.departments_id = d.id
+            ORDER BY p.created_at DESC
         `
     db.query(sql, (err, result) => {
       if (err) return reject(err)
@@ -30,14 +31,16 @@ const getIzinByStatus = (status) => {
   return new Promise((resolve, reject) => {
     const sql = `
             SELECT
-            p.id,
-            e.nama AS nama_karyawan,
-            d.nama AS departement,
-            p.alasan,
-            p.tanggal,
-            p.status
+              p.id,
+              e.nama AS nama_karyawan,
+              d.name AS departement,
+              p.alasan,
+              p.tanggal,
+              p.status
             FROM permohonan_izin p
             JOIN employee e ON p.employee_id = e.id
+            JOIN sections s ON e.section = s.id
+            JOIN departments d ON s.departments_id = d.id
             WHERE p.status = ?
          `
 
@@ -63,7 +66,6 @@ const getLogByMonth = (month) => {
 }
 
 const getPaginatedIzin = (page, limit) => {
-  console.log(page, limit)
   return new Promise((resolve, reject) => {
     const offset = (page - 1) * limit
     const sql = `
@@ -71,16 +73,18 @@ const getPaginatedIzin = (page, limit) => {
                      p.id, 
                      e.nama AS nama_karyawan,
                      e.postion AS jabatan,
-                     e.departement AS departmets,
-                     e.section AS sections,
+                     d.name AS department,
+                     s.name AS section,
                      p.alasan,
                      p.tanggal,
                      p.estimasi_keluar,
                      p.status,
                      p.created_at
-                     FROM permohonan_izin p
-                     JOIN employee e ON p.employee_id = e.id
-                     ORDER BY p.created_at DESC LIMIT ? OFFSET ?
+                  FROM permohonan_izin p
+                  JOIN employee e ON p.employee_id = e.id
+                  JOIN sections s ON e.section = s.id
+                  JOIN departments d ON s.departments_id = d.id
+                  ORDER BY p.created_at DESC LIMIT ? OFFSET ?
         `
     const countSql = 'SELECT COUNT(*) AS total FROM permohonan_izin'
 
@@ -127,7 +131,6 @@ const delIzin = (Id) => {
 
 const updateIzin = (status, id) => {
   return new Promise((resolve, reject) => {
-    console.log(status, id)
     const sql = 'UPDATE permohonan_izin SET status = ? WHERE id = ?'
     db.query(sql, [status, id], (err, result) => {
       if (err) return reject(err)
